@@ -1,5 +1,5 @@
 /** 
-  * Template Name: OsteriaX
+  * Template Name: iCaterMoAko
   * Version: 1 
   * Template Scripts
   * Author: MarkUps

@@ -35,6 +35,10 @@ body {
   line-height: 24px;
 }
 
+.content {
+  padding-top: 100px;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -195,6 +199,53 @@ img {
 .mu-send-btn:hover, 
 .mu-send-btn:focus {
   color: #fff;
+}
+
+/*==================
+ LOGIN/SIGN UP SECTION
+====================*/
+.auth-content {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.auth-content h2 {
+  color: #333;
+}
+
+.auth-content input[type="text"],
+.auth-content input[type="password"],
+.auth-content input[type="submit"] {
+  width: 250px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.auth-content input[type="submit"] {
+  background-color: #ee4532;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-content input[type="submit"]:hover {
+  background-color: #D13D2C;
+}
+
+.auth-content p {
+  margin-top: 10px;
+}
+
+.auth-content a {
+  color: #ee4532;
+  text-decoration: none; /* Remove underline */
+}
+
+.auth-content a:hover {
+  text-decoration: underline;
 }
 
 

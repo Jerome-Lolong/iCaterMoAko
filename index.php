@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  require "php_controllers/connector.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,23 +12,23 @@
     <title>iCaterMoAko | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
 
     <!-- Font awesome -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="./assets/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">   
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">   
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">    
+    <link rel="stylesheet" type="text/css" href="./assets/css/slick.css">    
     <!-- Date Picker -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datepicker.css">   
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-datepicker.css">   
      <!-- Gallery Lightbox -->
-    <link href="assets/css/magnific-popup.css" rel="stylesheet"> 
+    <link href="./assets/css/magnific-popup.css" rel="stylesheet"> 
     <!-- Theme color -->
-    <link id="switcher" href="assets/css/theme-color/red-theme.css" rel="stylesheet">     
+    <link id="switcher" href="./assets/css/theme-color/red-theme.css" rel="stylesheet">     
 
     <!-- Main style sheet -->
-    <link href="style.css" rel="stylesheet">    
+    <link href="./styles/style.css" rel="stylesheet">    
 
    
     <!-- Google Fonts -->
@@ -83,7 +88,7 @@
             <li><a href="#mu-restaurant-menu">MENU</a></li>                       
             <li><a href="#mu-reservation">RESERVATION</a></li>                       
             <li><a href="#mu-gallery">GALLERY</a></li>
-            <li><a href="#mu-chef">OUR CHEFS</a></li> 
+            <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
             <li><a href="#mu-contact">SIGN OUT</a></li> <!-- PLEASE PUT THE link of the log in page -->
           </ul>                            
@@ -169,7 +174,7 @@
               <div class="col-md-6">
                  <div class="mu-about-us-right">
                 <p>iCaterMoAko, your one stop shop for all catering needs! We offer you a wide range of tasty and customized catering options, no matter what kind of gathering or event you have planned.  iCaterMoAko understand the importance of creating memorable experiences by means of food. This is why we are committed to providing the highest quality cuisine that not only satisfies your taste buds, but also leaves a lasting impression on your guests.
-                   Each menu is carefully selected by our team of experienced chefs and culinary experts to ensure a perfect balance of flavour, texture and presentation. 
+                   Each menu is carefully selected by our team of experienced CATERERS and culinary experts to ensure a perfect balance of flavour, texture and presentation. 
                   We offer a wide range of dishes to suit every taste and occasion, from traditional favorites to modern twists. But it's not only about food; we also have a special focus on excellent service and attention to detail.
                      iCaterMoAko is here to make it memorable, whether you are planning a corporate event, a wedding reception, a birthday party, or any other special occasion. You can discuss your catering needs with us today, and we'll take care of the rest! I'd like to thank you for choosing iCaterMoAko, a place where great food and good service go hand in hand.</p>                              
                 </div>
@@ -182,7 +187,7 @@
   </section>
   <!-- End About us -->
 
-  <!-- Start Counter Section -->
+  <!-- Start Counter Section. To be Changed into PHP. -->
   <section id="mu-counter">
     <div class="mu-counter-overlay">
       <div class="container">
@@ -234,7 +239,7 @@
   </section>
   <!-- End Counter Section --> 
 
-  <!-- Start Restaurant Menu -->
+  <!-- Start Restaurant Menu. To be changed into PHP. -->
   <section id="mu-restaurant-menu">
     <div class="container">
       <div class="row">
@@ -246,6 +251,9 @@
               <h2>OUR MENU</h2>
             </div>
             
+            <?php
+            
+            ?>
             <div class="mu-restaurant-menu-content">
               <ul class="nav nav-tabs mu-restaurant-menu">
                 <li class="active"><a href="#meals" data-toggle="tab">Meals</a></li>
@@ -714,7 +722,7 @@
   </section>
   <!-- End Restaurant Menu -->
 
-  <!-- Start Reservation section -->
+  <!-- Start Reservation section. To be changed into Php. -->
   <section id="mu-reservation">
     <div class="container">
       <div class="row">
@@ -819,7 +827,7 @@
   </section>  
   <!-- End Reservation section -->
 
-  <!-- Start Gallery -->
+  <!-- Start Gallery. Also PHP. -->
   <section id="mu-gallery">
     <div class="container">
       <div class="row">
@@ -978,7 +986,7 @@
   </section>
   <!-- End Gallery -->
   
-  <!-- Start Client Testimonial section -->
+  <!-- Start Client Testimonial section. Change into PHP. -->
   <section id="mu-client-testimonial">
     <div class="mu-overlay">
       <div class="container">
@@ -1035,7 +1043,7 @@
   </section>
   <!-- End Client Testimonial section -->
   
-  <!-- Start Chef Section -->
+  <!-- Start Chef Section. Change into Catering Owners from PHP. -->
   <section id="mu-chef">
     <div class="container">
       <div class="row">
@@ -1044,7 +1052,7 @@
 
             <div class="mu-title">
               <span class="mu-subtitle">Our Professionals</span>
-              <h2>MASTER CHEFS</h2>
+              <h2>MASTER CATERERS</h2>
             </div>
 
             <div class="mu-chef-content">
@@ -1294,7 +1302,7 @@
             <a href="#"><span class="fa fa-youtube"></span></a>
           </div>
           <div class="mu-footer-copyright">
-            <p>&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All right reserved.</p>
+            <p>&copy; Copyright @2024 ICaterMoAko. All right reserved.</p>
           </div>         
         </div>
       </div>
@@ -1304,22 +1312,22 @@
   <!-- End Footer -->
   
   <!-- jQuery library -->
-  <script src="assets/js/jquery.min.js"></script>  
+  <script src="/assets/js/jquery.min.js"></script>  
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="assets/js/bootstrap.js"></script>   
+  <script src="/assets/js/bootstrap.js"></script>   
   <!-- Slick slider -->
-  <script type="text/javascript" src="assets/js/slick.js"></script>
+  <script type="text/javascript" src="/assets/js/slick.js"></script>
   <!-- Counter -->
-  <script type="text/javascript" src="assets/js/simple-animated-counter.js"></script>
+  <script type="text/javascript" src="/assets/js/simple-animated-counter.js"></script>
   <!-- Gallery Lightbox -->
-  <script type="text/javascript" src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="/assets/js/jquery.magnific-popup.min.js"></script>
   <!-- Date Picker -->
-  <script type="text/javascript" src="assets/js/bootstrap-datepicker.js"></script> 
+  <script type="text/javascript" src="/assets/js/bootstrap-datepicker.js"></script> 
   <!-- Ajax contact form  -->
-  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
  
   <!-- Custom js -->
-  <script src="assets/js/custom.js"></script> 
+  <script src="/assets/js/custom.js"></script> 
 
   </body>
 </html>

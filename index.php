@@ -74,16 +74,16 @@
           <!-- LOGO -->       
 
           <!--  Image based logo  -->
-          <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.php"><img src="assets/img/logo.png" alt="Logo img"></a>
 
            <!--  Text based logo  -->
-          <a class="navbar-brand" href="index.html">iCaterMoAko</a> 
+          <a class="navbar-brand" href="index.php">iCaterMoAko</a> 
          
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.php">HOME</a></li>
             <li><a href="#mu-about-us">ABOUT US</a></li>                       
             <li><a href="#mu-restaurant-menu">MENU</a></li>                       
             <li><a href="#mu-reservation">RESERVATION</a></li>                       
@@ -1051,8 +1051,8 @@
           <div class="mu-chef-area">
 
             <div class="mu-title">
-              <span class="mu-subtitle">Our Professionals</span>
-              <h2>MASTER CATERERS</h2>
+              <span class="mu-subtitle">Our Current Caterers</span>
+              <h2>HIGHLY-RATED CATERERS</h2>
             </div>
 
             <div class="mu-chef-content">

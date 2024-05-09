@@ -1,27 +1,29 @@
 <?php
     require "connector.php";
-?>
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <?php
-        
-        ?>
-        <script src="" async defer></script>
-    </body>
-</html>
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $owner_name = 'owner_name';
+        $business_name = 'business_name';
+        $address = 'address';
+        $tin = 'tin';
+        $date_founded = 'date_founded';
+        $email = 'email';
+        $password = 'password';
+    }
+
+    $query = "INSERT INTO caterer_info('owner's_name', 'business_name', 'address', 'tin', 'date_founded', 'email', 'password') VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+    $result = mysqli_prepare($conn, $query);
+
+    if($result){
+        mysqli_stmt_bind_param($result, 'sssssss', $owner_name, $business_name, $address, $tin, $date_founded, $email, $password);
+    }
+
+    if(mysqli_stmt_execute($result)){
+        echo "
+        Congratulations. You are now part of the team. Good Luck on your ventures.
+        ";
+
+        header("index.php");
+    }
+

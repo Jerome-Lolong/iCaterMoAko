@@ -7,23 +7,23 @@
   <title>iCaterMoAko | Registration</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
 
   <!-- Font awesome -->
-  <link href="assets/css/font-awesome.css" rel="stylesheet">
+  <link href="../assets/css/font-awesome.css" rel="stylesheet">
   <!-- Bootstrap -->
-  <link href="assets/css/bootstrap.css" rel="stylesheet">   
+  <link href="../assets/css/bootstrap.css" rel="stylesheet">   
   <!-- Slick slider -->
-  <link rel="stylesheet" type="text/css" href="assets/css/slick.css">    
+  <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">    
   <!-- Date Picker -->
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datepicker.css">   
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-datepicker.css">   
   <!-- Gallery Lightbox -->
-  <link href="assets/css/magnific-popup.css" rel="stylesheet"> 
+  <link href="../assets/css/magnific-popup.css" rel="stylesheet"> 
   <!-- Theme color -->
-  <link id="switcher" href="assets/css/theme-color/red-theme.css" rel="stylesheet">     
+  <link id="switcher" href="../assets/css/theme-color/red-theme.css" rel="stylesheet">     
 
   <!-- Main style sheet -->
-  <link href="style.css" rel="stylesheet">    
+  <link href="../styles/style.css" rel="stylesheet">    
 
   <!-- Google Fonts -->
   <!-- Prata for body  -->
@@ -64,7 +64,7 @@
 
           <!-- LOGO -->       
           <!--  Image based logo  -->
-          <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="Logo img"></a>
+          <a class="navbar-brand" href="index.html"><img src="../assets/img/logo.png" alt="Logo img"></a>
           <!--  Text based logo  -->
           <a class="navbar-brand" href="index.html">iCaterMoAko</a> 
 
@@ -88,9 +88,14 @@
 
 <!-- Start Register Section -->
 <div class="auth-content">
-    <form action="process_register.php" method="post">
+    <form action="../php_controllers/process_register.php" method="post">
       <h2>Register</h2>
-      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="text" name="owner_name" placeholder="Your Name (Last Name, First Name, M.I.)" required><br>
+      <input type="text" name="business_name" placeholder="Your Catering Service" required><br>
+      <input type="text" name="address" placeholder="Catering Address" required><br>
+      <input type="text" name="tin" placeholder="Tax Identification Number" required><br>
+      <input type="text" name="date_founded" placeholder="Date Founded" required><br>
+      <input type="text" name="email" placeholder="Business Email" required><br>
       <input type="password" name="password" placeholder="Password" required><br>
       <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
       <input type="submit" value="Register">

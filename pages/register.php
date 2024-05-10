@@ -88,7 +88,7 @@
 
 <!-- Start Register Section -->
 <div class="auth-content">
-    <form action="../php_controllers/process_register.php" method="post">
+    <form action="../php_controllers/register.php" method="post">
       <h2>Register</h2>
       <input type="text" name="owner_name" placeholder="Your Name (Last Name, First Name, M.I.)" required><br>
       <input type="text" name="business_name" placeholder="Your Catering Service" required><br>
@@ -100,9 +100,69 @@
       <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
       <input type="submit" value="Register">
     </form>
-    <p>Already have an account? <a href="login.html">Login</a></p>
+    <p>Already have an account? <a href="login.php">Login</a></p>
   </div>
   <!-- End Register Section -->
+
+  <?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $owner_name = 'owner_name';
+      $business_name = 'business_name';
+      $address = 'address';
+      $tin = 'tin';
+      $date_founded = 'date_founded';
+      $email = 'email';
+      $password = 'password';
+    }
+
+    $password = hash('sha256', $password);
+
+    $result = Register($owner_name, $business_name, $address, $tin, $date_founded, $email, $password);
+
+    if($result){
+      echo"
+        <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-centered' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='exampleModalCenterTitle'>Modal title</h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              Added Your Account Successfullt. Welcome to the Team.
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-primary'>Proceed to the Dashboard.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      ";
+    }else{
+      echo"
+        <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-centered' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='exampleModalCenterTitle'>Modal title</h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              An Error Occured while Creating Your Account.
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-primary'>Proceed to the Dashboard.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      ";
+    }
+  ?>
 
    <!-- Start Footer -->
    <footer id="mu-footer">

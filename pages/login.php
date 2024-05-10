@@ -88,15 +88,72 @@
 
   <!-- Start Login Section -->
   <div class="auth-content">
-    <form action="process_login.php" method="post">
+    <form action="login.php" method="post">
       <h2>Login</h2>
-      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="text" name="email" placeholder="Your Email" required><br>
       <input type="password" name="password" placeholder="Password" required><br>
       <input type="submit" value="Login">
     </form>
     <p>Don't have an account? <a href="register.html">Register</a></p>
   </div>
   <!-- End Login Section -->
+
+  <?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $emaillogin = 'email';
+      $password = 'password';
+
+      $password = hash('sha256', $password);
+
+      $result = login($emaillogin, $password);
+
+      if($result){
+        echo "
+          <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalCenterTitle'>Modal title</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+                Successfully Logged In.
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-primary'>Proceed to the Dashboard.</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        ";
+
+        header("dashboard.php");
+      }else{
+        echo "
+          <div class='modal fade' id='exampleModalCenter' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>
+          <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalCenterTitle'>Modal title</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+                Your Email and/or Password were Incorrect.
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-primary'>Ok.</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        ";
+      }
+    }
+  ?>
 
     <!-- Start Footer -->
     <footer id="mu-footer">

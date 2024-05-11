@@ -79,6 +79,29 @@
             </nav> 
         </header>
         <!-- End header section -->
+        <!--Total Sales-->
+        <div>
+
+        </div>
+
+        <!--Number of Customers-->
+        <div>
+
+        </div>
+        <!--Sales by Food Package-->
+        <div>
+
+        </div>
+
+        <!--Pending Appointments.-->
+        <div>
+
+        </div>
+
+        <!--Feedback Average-->
+        <div>
+
+        </div>
 
           <!-- Start Footer -->
         <footer id="mu-footer">

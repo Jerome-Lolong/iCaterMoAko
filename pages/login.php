@@ -78,7 +78,7 @@
             <li><a href="#mu-gallery">GALLERY</a></li>
             <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
-            <li><a href="#mu-contact">SIGN OUT</a></li> <!-- PLEASE PUT THE link of the log in page -->
+            <li><a href="">LOG IN</a></li> <!-- PLEASE PUT THE link of the log in page -->
           </ul>                            
         </div><!--/.nav-collapse -->       
       </div>          

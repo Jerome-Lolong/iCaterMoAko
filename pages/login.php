@@ -1,3 +1,7 @@
+<?php
+  ob_start();
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +98,7 @@
       <input type="password" name="password" placeholder="Password" required><br>
       <input type="submit" value="Login">
     </form>
-    <p>Don't have an account? <a href="register.html">Register</a></p>
+    <p>Don't have an account? <a href="register.php">Register</a></p>
   </div>
   <!-- End Login Section -->
 

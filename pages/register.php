@@ -131,7 +131,7 @@
               </button>
             </div>
             <div class='modal-body'>
-              Added Your Account Successfullt. Welcome to the Team.
+              Added Your Account Successfully. Welcome to the Team.
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-primary'>Proceed to the Dashboard.</button>

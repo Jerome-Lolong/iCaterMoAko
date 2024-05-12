@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['food_caterer_id'])){
+        header("Location: login.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -77,12 +84,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="customers.php" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        CUSTOMERS
-                        </a>
-                    </li>
-                    <li>
                         <a href="blog.php" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                         YOUR BLOGS
@@ -103,7 +104,41 @@
         </div>
         </header>
         <!-- End header section -->
+        <?php
+            $food_caterer_id = $_SESSION['food_caterer_id'];
+            require "../php_controllers/connector.php";
 
+            $sql = "SELECT feedback.feedback_id, appointment_schedule.appointment_date, feedback.rating, feedback.feedback_message FROM feedback INNER JOIN appointment_schedule ON feedback.appointment_id = appointment_schedule.appointment_id WHERE caterer_id = ?;";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if(mysqli_num_rows($result) > 0){
+        ?>
+        <!--Kayo ang bahala nito mag-style.-->
+        <table class = "table">
+            <th>Feedback Id</th>
+            <th>Date of Appointment</th>
+            <th>Rating</th>
+            <th>Message</th>
+            
+            <?php
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<tr>";
+                echo "<td>".$row['feedback.feedback_id']."</td>";
+                echo "<td>".$row['appointment_schedule.appointment_date']."</td>";
+                echo "<td>".$row['feedback.rating']."</td>";
+                echo "<td>".$row['feedback.feedback_message']."</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+        <?php
+            }else{
+                echo "<p>You don't have any customer feedback yet.</p>";
+            }
+        ?>
         <script src="" async defer></script>
     </body>
 </html>

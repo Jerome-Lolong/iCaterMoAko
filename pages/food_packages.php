@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['food_caterer_id'])){
+        header("Location: login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -101,6 +109,50 @@
         </div>
         </header>.
         <!-- End header section -->
+
+        <?php
+            $food_caterer_id = $_SESSION['food_caterer_id'];
+            require "../php_controllers/connector.php";
+
+            $sql = "SELECT food_package_id, package_name, details, price FROM food_pck_gen_info WHERE food_caterer_id = ?;";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            if(mysqli_num_rows($result) > 0){
+        ?>
+        <!--Kayo ang bahala nito mag-style.-->
+        <table class = "table">
+            <th>Food Package Id</th>
+            <th>Food Package Name</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Action</th>
+            
+            <?php
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<tr>";
+                echo "<td>".$row['food_package_id']."</td>";
+                echo "<td>".$row['package_name']."</td>";
+                echo "<td>".$row['details']."</td>";
+                echo "<td>".$row['price']."</td>";
+                /*
+                echo "<td>
+                <a href='food_package_controller.php?action=view&id="."<?php echo $row['food_package_id']; ?>' class='btn btn-primary btn-sm'>View</a>
+                <a href='food_package_controller.php?action=update&id=<?php echo $row['food_package_id']; ?>' class='btn btn-info btn-sm'>Update</a>
+                <a href='food_package_controller.php?action=delete&id=<?php echo $row['food_package_id']; ?>' class='btn btn-danger btn-sm'>Delete</a>
+                </td>";
+                echo "</tr>";
+                */
+            }
+            ?>
+        </table>
+        <?php
+            }else{
+                echo "<p>You Haven't added a Food Package. You can add one.</p>";
+            }
+        ?>
 
         <script src="" async defer></script>
     </body>

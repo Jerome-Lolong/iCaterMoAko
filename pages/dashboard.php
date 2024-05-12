@@ -75,12 +75,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="customers.php" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        CUSTOMERS
-                        </a>
-                    </li>
-                    <li>
                         <a href="blog.php" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                         YOUR BLOGS

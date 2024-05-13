@@ -1,0 +1,14 @@
+Di pa tapos na pages:
+
+1. Appointments.php
+2. Dashboard.php
+3. food package controllers.php
+4. blog.php
+5. food packages.php
+6. yung view food details
+
+Use the icatermoako.sql dump file for database reference
+
+tapusin na natin ito while naga-capstone project tayo. Not available ako ngayon since naga-asikaso ako sa naga-work dito sa bahay.
+
+thank you.

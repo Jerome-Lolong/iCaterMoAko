@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// PLACEHOLDER ID FOR TESTING
+// $caterer_id = 1;
+
+// // Set the caterer_id in the session
+// $_SESSION['caterer_id'] = $caterer_id;
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -27,7 +37,8 @@
         <link id="switcher" href="../assets/css/theme-color/red-theme.css" rel="stylesheet">     
 
         <!-- Main style sheet -->
-        <link href="../styles/style.css" rel="stylesheet">    
+        <link href="../styles/style.css" rel="stylesheet">
+        <link href="../styles/styles.css" rel="stylesheet">    
         <!-- Google Fonts -->
 
         <!-- Prata for body  -->
@@ -101,41 +112,74 @@
         </div>
         </header>
         <!-- End header section -->
-        <?php
-            $food_caterer_id = $_SESSION['food_caterer_id'];
-            require "../php_controllers/connector.php";
-
-            $sql = "SELECT feedback.feedback_id, appointment_schedule.appointment_date, feedback.rating, feedback.feedback_message FROM feedback INNER JOIN appointment_schedule ON feedback.appointment_id = appointment_schedule.appointment_id WHERE caterer_id = ?;";
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-
-            if(mysqli_num_rows($result) > 0){
-        ?>
-        <!--Kayo ang bahala nito mag-style.-->
-        <table class = "table">
-            <th>Feedback Id</th>
-            <th>Date of Appointment</th>
-            <th>Rating</th>
-            <th>Message</th>
+        
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"></div> <!-- Empty column for spacing -->
             
-            <?php
-            while($row = mysqli_fetch_assoc($result)){
-                echo "<tr>";
-                echo "<td>".$row['feedback.feedback_id']."</td>";
-                echo "<td>".$row['appointment_schedule.appointment_date']."</td>";
-                echo "<td>".$row['feedback.rating']."</td>";
-                echo "<td>".$row['feedback.feedback_message']."</td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
-        <?php
-            }else{
-                echo "<p>You don't have any customer feedback yet.</p>";
-            }
+                <?php
+                // Check if caterer_id is set in the session
+if(isset($_SESSION['caterer_id'])) {
+    $caterer_id = $_SESSION['caterer_id'];
+
+    // Include the database connector
+    require "../php_controllers/connector.php";
+
+    // Prepare and execute SQL query to fetch appointments for the specific caterer
+    $sql = "SELECT * FROM appointment_schedule WHERE caterer_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $caterer_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if(mysqli_num_rows($result) > 0){
         ?>
+        
+            <table class="db_table">
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Date</th>
+                        <th>Event Name</th>
+                        <th>Customer Name</th>
+                        <th>Location</th>
+                        <th>Number of Guests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Loop through each appointment and display its details
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<tr>";
+                        echo "<td>".$row['appointment_id']."</td>";
+                        echo "<td>".$row['appointment_date']."</td>";
+                        echo "<td>".$row['event_name']."</td>";
+                        echo "<td>".$row['first_name']." ".$row['last_name']."</td>";
+                        echo "<td>".$row['location']."</td>";
+                        echo "<td>".$row['number_of_guests']."</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <!-- End of appointments table -->
+
+        </body>
+        </html>
+        <?php
+    } else {
+        // If no appointments found, display a message
+        echo "<p>You don't have any appointments yet.</p>";
+    }
+} else {
+    // If caterer_id is not set in the session, display an error message
+    echo "<p>caterer_id is not set</p>";
+}
+                ?>
+            </div>
+        </div>
+    </div>
+
 
         <!-- jQuery library -->
         <script src="/assets/js/jquery.min.js"></script>  

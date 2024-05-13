@@ -1,6 +1,15 @@
 <?php
-  session_start();
-  require "php_controllers/connector.php";
+$host = 'localhost'; // or '127.0.0.1' depending on your setup
+$port = 3307; // Your custom port
+$username = 'root'; // Your database username
+$password = ''; // Your database password
+$database = 'icatermoko'; // Your database name
+
+$conn = mysqli_connect($host, $username, $password, $database, $port);
+
+if (!$conn) {
+    die("Sorry, Connection cannot be established: " . mysqli_connect_error());
+}
 ?>
 
 <!DOCTYPE html>
@@ -1060,29 +1069,11 @@
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Simon Jonson</h4>
-                      <span>Head Chef</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
                       <img src="assets/img/chef/chef-2.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Kelly Wenzel</h4>
-                      <span>Pizza Chef</span>
+                      <h4>Chef Aling Adela</h4>
+                      <span>Master of Adobong Manok</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1096,11 +1087,29 @@
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-3.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Greg Hong</h4>
-                      <span>Grill Chef</span>
+                      <h4>Chef Mang Kardo</h4>
+                      <span>Kare Kare Connoisseur</span>
+                    </div>
+                    <div class="mu-single-chef-social">
+                      <a href="#"><i class="fa fa-facebook"></i></a>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                      <a href="#"><i class="fa fa-google-plus"></i></a>
+                      <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="mu-single-chef">
+                    <figure class="mu-single-chef-img">
+                      <img src="assets/img/chef/chef-5.jpg" alt="chef img">
+                    </figure>
+                    <div class="mu-single-chef-info">
+                      <h4>Chef Siling Labuyo</h4>
+                      <span>Sinigang Specialist</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1117,8 +1126,8 @@
                       <img src="assets/img/chef/chef-4.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Marty Fukuda</h4>
-                      <span>Burger Chef</span>
+                      <h4>Chef Tatay Turo</h4>
+                      <span>Tokwa't Baboy Virtuoso</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1135,8 +1144,8 @@
                       <img src="assets/img/chef/chef-5.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Simon Jonson</h4>
-                      <span>Head Chef</span>
+                      <h4>Chef Nanay Nene</h4>
+                      <span>Lumpiang Shanghai Maestro</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1153,8 +1162,8 @@
                       <img src="assets/img/chef/chef-1.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Kelly Wenzel</h4>
-                      <span>Pizza Chef</span>
+                      <h4>Chef Manang Chitang</h4>
+                      <span>Ensaladang Talong Expert</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1171,8 +1180,8 @@
                       <img src="assets/img/chef/chef-2.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Greg Hong</h4>
-                      <span>Grill Chef</span>
+                      <h4>Chef Inay Irene</h4>
+                      <span>Leche Flan Artisan</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1189,8 +1198,8 @@
                       <img src="assets/img/chef/chef-3.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
-                      <h4>Marty Fukuda</h4>
-                      <span>Burger Chef</span>
+                      <h4>Chef Bosing Benjie</h4>
+                      <span>Halo Halo Maestro</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1312,22 +1321,22 @@
   <!-- End Footer -->
   
   <!-- jQuery library -->
-  <script src="/assets/js/jquery.min.js"></script>  
+  <script src="./assets/js/jquery.min.js"></script>  
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="/assets/js/bootstrap.js"></script>   
+  <script src="./assets/js/bootstrap.js"></script>   
   <!-- Slick slider -->
-  <script type="text/javascript" src="/assets/js/slick.js"></script>
+  <script type="text/javascript" src="./assets/js/slick.js"></script>
   <!-- Counter -->
-  <script type="text/javascript" src="/assets/js/simple-animated-counter.js"></script>
+  <script type="text/javascript" src="./assets/js/simple-animated-counter.js"></script>
   <!-- Gallery Lightbox -->
-  <script type="text/javascript" src="/assets/js/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery.magnific-popup.min.js"></script>
   <!-- Date Picker -->
-  <script type="text/javascript" src="/assets/js/bootstrap-datepicker.js"></script> 
+  <script type="text/javascript" src="./assets/js/bootstrap-datepicker.js"></script> 
   <!-- Ajax contact form  -->
-  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="./assets/js/app.js"></script>
  
   <!-- Custom js -->
-  <script src="/assets/js/custom.js"></script> 
+  <script src="./assets/js/custom.js"></script> 
 
   </body>
 </html>

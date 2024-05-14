@@ -110,10 +110,10 @@
         <div>
             <?php
                 $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
-                $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
-                mysqli_stmt_execute($stmt);
-                $sales_result = mysqli_stmt_get_result($stmt);                
+                $stmt1 = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt1, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt1);
+                $sales_result = mysqli_stmt_get_result($stmt1);                
 
                 if(mysqli_num_rows($sales_result)){
                     $row_sales = mysqli_fetch_assoc($result);
@@ -126,10 +126,10 @@
             <h3>Sales by Food Package</h3>
             <?php
                 $sql = "SELECT food_pckgen_info, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE caterer_id = ? LIMIT 5";
-                $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
-                mysqli_stmt_execute($stmt);
-                $fp_result = mysqli_stmt_get_result($stmt);                
+                $stmt2 = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt2);
+                $fp_result = mysqli_stmt_get_result($stmt2);                
 
                 if(mysqli_num_rows($fp_result) > 0){
             ?>
@@ -160,10 +160,10 @@
         <div>
             <h3>Number of Customers Ordering From Your Business</h3>
             <?php
-                $stmt = mysqli_prepare($conn, "SELECT COUNT(*) AS total_customers FROM appointment_schedule WHERE caterer_id = ?");
-                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
-                mysqli_stmt_execute($stmt);
-                $customers = mysqli_stmt_get_result($stmt);
+                $stmt3 = mysqli_prepare($conn, "SELECT COUNT(*) AS total_customers FROM appointment_schedule WHERE caterer_id = ?");
+                mysqli_stmt_bind_param($stmt3, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt3);
+                $customers = mysqli_stmt_get_result($stmt3);
                 
                 if(mysqli_num_rows($customers) > 0){
                     $customer_row = mysqli_fetch_assoc($customers);
@@ -172,7 +172,60 @@
             ?>
         </div>
         <!--Pending Appointments.-->
+        <h3>Your Pending Appointments</h3>
+            <?php
+            //To be changed with a foreign key.
+                $stmt4 = mysqli_prepare($conn, "SELECT appointment_id, event_name, CONCAT(first_name, ' ', last_name) AS organizers, event_date, event_time, number_of_guests FROM appointment_schedule WHERE caterer_id = ? LIMIT 5");
+                mysqli_stmt_bind_param($stmt4, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt4);
+                $ap_result = mysqli_stmt_get_result($stmt4);                
+
+                if(mysqli_num_rows($ap_result) > 0){
+            ?>
+            <table>
+                <th>Appointment ID</th>
+                <th>Event Name</th>
+                <th>Organizers</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Number of Guests</th>
+                <?php
+                    while ($row_ap = mysqli_fetch_assoc($fp_result)){
+                        echo "<tr>";
+                        echo "<td>".$row_ap['appointment_id']."</td>";
+                        echo "<td>".$row_ap['event_name']."</td>";
+                        echo "<td>".$row_ap['organizers']."</td>";
+                        echo "<td>".$row_ap['event_date']."</td>";
+                        echo "<td>".$row_ap['event_time']."</td>";
+                        echo "<td>".$row_ap['number_of_guests']."</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>  
+            <?php
+                }else{
+                    echo "<p>You have no Pending Appointments Yet.</p>";
+                }
+            ?>          
         <!--Feedback Average-->
+        <div>
+            <h3>Average Feedback on Your Business</h3>
+            <?php
+                $stmt5 = mysqli_prepare($conn, "SELECT AVG(rating) AS service_rating FROM feedback WHERE caterer_id = ?;");
+                mysqli_stmt_bind_param($stmt5, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt5);
+                $feedback = mysqli_stmt_get_result($stmt5);
+
+                if(mysqli_num_rows($feedback) > 0){
+                    $feedbackRow = mysqli_fetch_assoc($feedback);
+                    echo "<strong>".$feedbackRow['service_rating']."</strong>";
+                }
+            ?>
+            
+            <?php
+                echo "<strong>".$average_rating."</strong>";
+            ?>
+        </div>
         <!-- jQuery library -->
         <script src="/assets/js/jquery.min.js"></script>  
         <!-- Include all compiled plugins (below), or include individual files as needed -->

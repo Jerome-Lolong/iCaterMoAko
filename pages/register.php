@@ -88,13 +88,13 @@
 
 <!-- Start Register Section -->
 <div class="auth-content">
-    <form action="../php_controllers/register.php" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       <h2>Register</h2>
       <input type="text" name="owner_name" placeholder="Your Name (Last Name, First Name, M.I.)" required><br>
       <input type="text" name="business_name" placeholder="Your Catering Service" required><br>
       <input type="text" name="address" placeholder="Catering Address" required><br>
       <input type="text" name="tin" placeholder="Tax Identification Number" required><br>
-      <input type="text" name="date_founded" placeholder="Date Founded" required><br>
+      <input type="date" name="date_founded" placeholder="Date Founded" required><br> <!--Need ayudin yung design-->
       <input type="text" name="email" placeholder="Business Email" required><br>
       <input type="password" name="password" placeholder="Password" required><br>
       <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
@@ -106,18 +106,21 @@
 
   <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-      $owner_name = 'owner_name';
-      $business_name = 'business_name';
-      $address = 'address';
-      $tin = 'tin';
-      $date_founded = 'date_founded';
-      $email = 'email';
-      $password = 'password';
+      $owner_name = $_POST['owner_name'];
+      $business_name = $_POST['business_name'];
+      $address = $_POST['address'];
+      $tin = $_POST['tin'];
+      $date_founded = $_POST['date_founded'];
+      $email = $_POST['email'];
+      $raw_password = $_POST['password'];
     }
 
-    $password = hash('sha256', $password);
+    $password = hash('sha256', $raw_password);
 
     $result = Register($owner_name, $business_name, $address, $tin, $date_founded, $email, $password);
+
+    require_once "../php_controllers/user_controller.php";
+
 
     if($result){
       echo"

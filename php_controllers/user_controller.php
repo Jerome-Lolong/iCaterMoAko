@@ -3,14 +3,19 @@
     function Register($owner_name, $business_name, $address, $tin, $date_founded, $email, $password){
         require "connector.php";
 
-        $query = "INSERT INTO caterer_info('owner's_name', 'business_name', 'address', 'tin', 'date_founded', 'email', 'password') VALUES (?, ?, ?, ?, ?, ?, ?);";
+        $stmt = mysqli_prepare($conn, "INSERT INTO caterer_info('owner's_name', 'business_name', 'address', 'tin', 'date_founded', 'email', 'password') VALUES (?, ?, ?, ?, ?, ?, ?);");
 
-        $result = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($result, 'sssssss', $owner_name, $business_name, $address, $tin, $date_founded, $email, $password);
+        if($stmt == false){
+            error_log(mysqli_error($conn));
+            return false;
+        }
+
+        mysqli_stmt_bind_param($stmt, 'sssssss', $owner_name, $business_name, $address, $tin, $date_founded, $email, $password);
     
-        if(mysqli_stmt_execute($result)){
+        if(mysqli_stmt_execute($stmt)){
             return true;
         }else{
+            error_log(mysqli_error($conn));
             return false;
         }
     }

@@ -1,15 +1,5 @@
 <?php
-$host = 'localhost'; // or '127.0.0.1' depending on your setup
-$port = 3307; // Your custom port
-$username = 'root'; // Your database username
-$password = ''; // Your database password
-$database = 'icatermoko'; // Your database name
-
-$conn = mysqli_connect($host, $username, $password, $database, $port);
-
-if (!$conn) {
-    die("Sorry, Connection cannot be established: " . mysqli_connect_error());
-}
+require "php_controllers/connector.php";
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +89,8 @@ if (!$conn) {
             <li><a href="#mu-gallery">GALLERY</a></li>
             <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
-            <li><a href="#mu-contact">SIGN OUT</a></li> <!-- PLEASE PUT THE link of the log in page -->
+            <li><a href="#mu-contact">BOOST YOUR </a></li> <!-- PLEASE PUT THE link of the log in page -->
+            <li><a href="#mu-contact">BOOST YOUR </a></li>
           </ul>                            
         </div><!--/.nav-collapse -->       
       </div>          

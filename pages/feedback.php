@@ -1,9 +1,9 @@
-<?php 
+<?php /*
     session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->

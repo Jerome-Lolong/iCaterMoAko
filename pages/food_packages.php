@@ -1,9 +1,9 @@
 <?php 
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -111,10 +111,10 @@
         <!-- End header section -->
 
         <?php
-            $food_caterer_id = $_SESSION['food_caterer_id'];
+            //$food_caterer_id = $_SESSION['food_caterer_id'];
             require "../php_controllers/connector.php";
 
-            $sql = "SELECT food_package_id, package_name, details, price FROM food_pck_gen_info WHERE food_caterer_id = ?;";
+            $sql = "SELECT food_pckgeninfo_id, package_name, details, price FROM food_pck_gen_info WHERE food_caterer_id = ?;";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
             mysqli_stmt_execute($stmt);

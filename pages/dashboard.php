@@ -1,3 +1,13 @@
+<?php /*
+    session_start();
+    if(!isset($_SESSION['food_caterer_id'])){
+        header("Location: login.php");
+        exit();
+    } */
+
+    $food_caterer_id = $_SESSION['food_caterer_id'];
+    require "../php_controllers/connector.php";
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -94,37 +104,75 @@
             </div>
         </div>
         </header>
-
         <!-- End header section -->
-        <!--Total Sales-->
-        <div class = "row">
-            <div class = "col">
-                test1
-            </div>
-        <!--Sales by Food Package-->
-            <div class = "col">
-                test 2
-            </div>
-        </div>
 
+        <!--Total Sales. A Card should do a trick here.-->
+        <div>
+            <?php
+                $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt);
+                $sales_result = mysqli_stmt_get_result($stmt);                
+
+                if(mysqli_num_rows($sales_result)){
+                    $row_sales = mysqli_fetch_assoc($result);
+                    echo"<strong>".$row_sales["total_sales"]."</strong>";
+                }
+            ?>
+        </div>
+        <!--Sales by Food Package. Use the table frontend.-->
+        <div>
+            <h3>Sales by Food Package</h3>
+            <?php
+                $sql = "SELECT food_pckgen_info, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE caterer_id = ? LIMIT 5";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt);
+                $fp_result = mysqli_stmt_get_result($stmt);                
+
+                if(mysqli_num_rows($fp_result) > 0){
+            ?>
+            <table>
+                <th>Food Package ID</th>
+                <th>Package Name</th>
+                <th>Number of Orders</th>
+                <th>Subtotal</th>
+                <?php
+                    while ($row_fp = mysqli_fetch_assoc($fp_result)){
+                        echo "<tr>";
+                        echo "<td>".$row_fp['food_pckgen_info']."</td>";
+                        echo "<td>".$row_fp['package_name']."</td>";
+                        echo "<td>".$row_fp['number_of_orders']."</td>";
+                        echo "<td>".$row_fp['sales_per_foodpackage']."</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>  
+            <?php
+                }else{
+                    echo "<p>You don't have Your Food Packages Yet. Go to Food Packages and Start adding new food packages.</p>";
+                }
+            ?>          
+
+        </div>
         <!--Number of Customers-->
-        <div class = "row">
-            <div class = "col">
-
-            </div>
+        <div>
+            <h3>Number of Customers Ordering From Your Business</h3>
+            <?php
+                $stmt = mysqli_prepare($conn, "SELECT COUNT(*) AS total_customers FROM appointment_schedule WHERE caterer_id = ?");
+                mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
+                mysqli_stmt_execute($stmt);
+                $customers = mysqli_stmt_get_result($stmt);
+                
+                if(mysqli_num_rows($customers) > 0){
+                    $customer_row = mysqli_fetch_assoc($customers);
+                    echo "<strong>".$customer_row['total_customers']."</strong>";
+                }
+            ?>
         </div>
-
-
         <!--Pending Appointments.-->
-        <div>
-
-        </div>
-
         <!--Feedback Average-->
-        <div>
-
-        </div>
-        
         <!-- jQuery library -->
         <script src="/assets/js/jquery.min.js"></script>  
         <!-- Include all compiled plugins (below), or include individual files as needed -->

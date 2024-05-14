@@ -25,7 +25,21 @@ function addFoodPackage($pkg_name, $details, $price, $food_name, $description, $
 }
 
 function updateFoodPackage(){
+
+}
+
+function incrementFoodPackage($food_pckgeninfo_id){
     require "connector.php";
+
+    $fd_pck_update_stmt = mysqli_prepare($conn, "UPDATE FoodPackage SET number_of_orders = number_of_orders + 1 WHERE food_pckgeninfo_id = ?");
+    mysqli_stmt_bind_param($fd_pck_update_stmt, 'i', $food_pckgeninfo_id);
+    $result = mysqli_stmt_execute($fd_pck_info_stmt);
+
+    if($result){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function deleteFoodPackage($food_pck_gen_id){
@@ -35,5 +49,7 @@ function deleteFoodPackage($food_pck_gen_id){
     mysqli_stmt_bind_param($del_fd_pck_info_stmt, 'i', $food_pck_gen_id);
     $result = mysqli_stmt_execute($del_fd_pck_info_stmt);
 
-
+    if(mysqli_stmt_affected_rows($del_fd_pck_info_stmt)){
+        return true;
+    }else{return false;}
 }

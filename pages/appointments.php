@@ -1,11 +1,11 @@
-<?php
-session_start();
-
-// PLACEHOLDER ID FOR TESTING
-// $caterer_id = 1;
-
-// // Set the caterer_id in the session
-// $_SESSION['caterer_id'] = $caterer_id;
+<?php 
+/*
+    session_start();
+    if(!isset($_SESSION['food_caterer_id'])){
+        header("Location: login.php");
+        exit();
+    }
+    */
 ?>
 
 <!DOCTYPE html>

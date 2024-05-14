@@ -83,12 +83,6 @@
                         FEEDBACK
                         </a>
                     </li>
-                    <li>
-                        <a href="blog.php" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        YOUR BLOGS
-                        </a>
-                    </li>
                 </ul>
                 <hr>
                 <div class="dropdown">

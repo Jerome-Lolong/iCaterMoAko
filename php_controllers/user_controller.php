@@ -3,7 +3,7 @@
     function Register($owner_name, $business_name, $address, $tin, $date_founded, $email, $password){
         require "connector.php";
 
-        $stmt = mysqli_prepare($conn, "INSERT INTO caterer_info('owner's_name', 'business_name', 'address', 'tin', 'date_founded', 'email', 'password') VALUES (?, ?, ?, ?, ?, ?, ?);");
+        $stmt = mysqli_prepare($conn, "INSERT INTO caterer_info( owner's_name ,  business_name ,  address ,  tin ,  date_founded ,  email ,  password ) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
         if($stmt == false){
             error_log(mysqli_error($conn));

@@ -1,9 +1,9 @@
-<?php /*
+<?php 
     session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
-    } */
+    }
 
     $food_caterer_id = $_SESSION['food_caterer_id'];
     require "../php_controllers/connector.php";
@@ -125,7 +125,7 @@
         <div>
             <h3>Sales by Food Package</h3>
             <?php
-                $sql = "SELECT food_pckgen_info, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE caterer_id = ? LIMIT 5";
+                $sql = "SELECT food_pckgen_info_id, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
                 $stmt2 = mysqli_prepare($conn, $sql);
                 mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
                 mysqli_stmt_execute($stmt2);

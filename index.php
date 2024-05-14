@@ -1,5 +1,15 @@
 <?php
-require "php_controllers/connector.php";
+$host = 'localhost'; // or '127.0.0.1' depending on your setup
+$port = 3307; // Your custom port
+$username = 'root'; // Your database username
+$password = ''; // Your database password
+$database = 'icatermoako'; // Your database name
+
+$conn = mysqli_connect($host, $username, $password, $database, $port);
+
+if (!$conn) {
+    die("Sorry, Connection cannot be established: " . mysqli_connect_error());
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +29,8 @@ require "php_controllers/connector.php";
     <link href="./assets/css/bootstrap.css" rel="stylesheet">   
     <!-- Slick slider -->
     <link rel="stylesheet" type="text/css" href="./assets/css/slick.css">    
-    <!-- Date Picker -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-datepicker.css">   
+    <!-- Date Picker
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-datepicker.css">    -->
      <!-- Gallery Lightbox -->
     <link href="./assets/css/magnific-popup.css" rel="stylesheet"> 
     <!-- Theme color -->
@@ -89,8 +99,7 @@ require "php_controllers/connector.php";
             <li><a href="#mu-gallery">GALLERY</a></li>
             <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
-            <li><a href="#mu-contact">BOOST YOUR </a></li> <!-- PLEASE PUT THE link of the log in page -->
-            <li><a href="#mu-contact">BOOST YOUR </a></li>
+            <li><a href="pages/login.php">SIGN OUT</a></li>
           </ul>                            
         </div><!--/.nav-collapse -->       
       </div>          
@@ -743,49 +752,37 @@ require "php_controllers/connector.php";
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">                       
-                          <input type="text" class="form-control" placeholder="Full Name">
+                          <input type="text" name="fullName" class="form-control" placeholder="Full Name">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">                        
-                          <input type="email" class="form-control" placeholder="Email">
+                          <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">                        
-                          <input type="text" class="form-control" placeholder="Phone Number">
+                          <input type="text" name="phoneNum" class="form-control" placeholder="Phone Number">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                      <div class="form-group">                        
+                          <input type="number" name="estHeadcount" class="form-control" placeholder="Estimated Headcount">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <select class="form-control">
-                            <option value="0">How Many?</option>
-                            <option value="1 Person">1 Person</option>
-                            <option value="2 People">2 People</option>
-                            <option value="3 People">3 People</option>
-                            <option value="4 People">4 People</option>
-                            <option value="5 People">5 People</option>
-                            <option value="6 People">6 People</option>
-                            <option value="7 People">7 People</option>
-                            <option value="8 People">8 People</option>
-                            <option value="9 People">9 People</option>
-                            <option value="10 People">10 People</option>
-                          </select>                      
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <input type="text" class="form-control" id="datepicker" placeholder="Date">              
+                          <input type="date" name="date" class="form-control" id="datepicker" placeholder="Date">              
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">                        
-                          <input type="text" class="form-control" placeholder="Venue">
+                          <input type="text" name="venue" class="form-control" placeholder="Venue">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <textarea class="form-control" cols="30" rows="10" placeholder="Your Message"></textarea>
+                          <textarea class="form-control" name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
                         </div>
                       </div>
                       <button type="submit" class="mu-readmore-btn">Make Reservation</button>
@@ -1321,13 +1318,52 @@ require "php_controllers/connector.php";
   <script type="text/javascript" src="./assets/js/simple-animated-counter.js"></script>
   <!-- Gallery Lightbox -->
   <script type="text/javascript" src="./assets/js/jquery.magnific-popup.min.js"></script>
-  <!-- Date Picker -->
-  <script type="text/javascript" src="./assets/js/bootstrap-datepicker.js"></script> 
+  <!-- Date Picker
+  <script type="text/javascript" src="./assets/js/bootstrap-datepicker.js"></script>  -->
   <!-- Ajax contact form  -->
   <script type="text/javascript" src="./assets/js/app.js"></script>
  
   <!-- Custom js -->
   <script src="./assets/js/custom.js"></script> 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.mu-reservation-form');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModal = document.getElementById('closeModal');
 
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Show the pop-up
+      thankYouModal.style.display = 'block';
+      modalOverlay.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', function() {
+      // Hide the pop-up
+      thankYouModal.style.display = 'none';
+      modalOverlay.style.display = 'none';
+    });
+
+    modalOverlay.addEventListener('click', function() {
+      // Hide the pop-up when clicking outside of it
+      thankYouModal.style.display = 'none';
+      modalOverlay.style.display = 'none';
+    });
+  });
+  </script>
+
+
+  <!-- Popup Modal -->
+  <div id="thankYouModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; background-color:white; border:1px solid #ccc; box-shadow:0 0 10px rgba(0,0,0,0.1); z-index:1000;">
+    <br><br><h2>Thank You for Your Reservation!</h2>
+    <br><p>We are thrilled to confirm your reservation! Your event is important to us, and we are dedicated to providing you with an exceptional catering experience.</p><br><br>
+    <div style="position: absolute; top: 10px; left: 10px; ">
+    <button id="closeModal" style="padding: 5px 10px; background-color: #ee4532; color: #fff; border: none; cursor: pointer; z-index: 1;">Go Back</button>
+    </div>
+  </div>
+  <!-- Overlay for Modal -->
+  <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;"></div>
   </body>
 </html>

@@ -64,9 +64,9 @@
 
           <!-- LOGO -->       
           <!--  Image based logo  -->
-          <a class="navbar-brand" href="index.html"><img src="../assets/img/logo.png" alt="Logo img"></a>
+          <a class="navbar-brand" href="../index.php"><img src="../assets/img/logo.png" alt="Logo img"></a>
           <!--  Text based logo  -->
-          <a class="navbar-brand" href="index.html">iCaterMoAko</a> 
+          <a class="navbar-brand" href="../index.php">iCaterMoAko</a> 
 
         </div>
         <div id="navbar" class="navbar-collapse collapse">

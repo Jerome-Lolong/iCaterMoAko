@@ -48,6 +48,7 @@
         <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>   
         <!-- Open Sans for title -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -258,22 +259,22 @@
     </div>
 
         <!-- jQuery library -->
-        <script src="/assets/js/jquery.min.js"></script>  
+        <script src="../assets/js/jquery.min.js"></script>  
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="/assets/js/bootstrap.js"></script>   
+        <script src="../assets/js/bootstrap.js"></script>   
         <!-- Slick slider -->
-        <script type="text/javascript" src="/assets/js/slick.js"></script>
+        <script type="text/javascript" src="../assets/js/slick.js"></script>
         <!-- Counter -->
-        <script type="text/javascript" src="/assets/js/simple-animated-counter.js"></script>
+        <script type="text/javascript" src="../assets/js/simple-animated-counter.js"></script>
         <!-- Gallery Lightbox -->
-        <script type="text/javascript" src="/assets/js/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="../assets/js/jquery.magnific-popup.min.js"></script>
         <!-- Date Picker -->
-        <script type="text/javascript" src="/assets/js/bootstrap-datepicker.js"></script> 
+        <script type="text/javascript" src="../assets/js/bootstrap-datepicker.js"></script> 
         <!-- Ajax contact form  -->
-        <script type="text/javascript" src="/assets/js/app.js"></script>
+        <script type="text/javascript" src="../assets/js/app.js"></script>
         
         <!-- Custom js -->
-        <script src="/assets/js/custom.js"></script> 
+        <script src="../assets/js/custom.js"></script> 
 
         <!-- Chart.js scripts -->
             <!-- Pass PHP variables to JavaScript -->
@@ -282,6 +283,5 @@
             var pendingAppointments = <?php echo $pending_appointments; ?>;
             var accomplishedAppointments = <?php echo $accomplished_appointments; ?>;
         </script>
-        <script src="chart.js"></script>
     </body>
 </html>

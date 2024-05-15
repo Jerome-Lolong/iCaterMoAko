@@ -276,6 +276,12 @@
         <script src="/assets/js/custom.js"></script> 
 
         <!-- Chart.js scripts -->
-        <script src = "../assets/js/chart.js"></script>
+            <!-- Pass PHP variables to JavaScript -->
+        <script>
+            var monthlySales = <?php echo json_encode($monthly_sales); ?>;
+            var pendingAppointments = <?php echo $pending_appointments; ?>;
+            var accomplishedAppointments = <?php echo $accomplished_appointments; ?>;
+        </script>
+        <script src="chart.js"></script>
     </body>
 </html>

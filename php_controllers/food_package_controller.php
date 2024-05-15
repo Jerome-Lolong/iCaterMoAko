@@ -32,7 +32,7 @@ function incrementFoodPackage($food_pckgeninfo_id){
     require "connector.php";
 
     $fd_pck_update_stmt = mysqli_prepare($conn, "UPDATE FoodPackage SET number_of_orders = number_of_orders + 1 WHERE food_pckgeninfo_id = ?");
-    mysqli_stmt_bind_param($fd_pck_update_stmt, 'i', $food_pckgeninfo_id);
+    mysqli_stmt_bind_param($fd_pck_update_stmdt, 'i', $food_pckgeninfo_id);
     $result = mysqli_stmt_execute($fd_pck_info_stmt);
 
     if($result){

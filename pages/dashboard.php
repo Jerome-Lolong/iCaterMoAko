@@ -96,20 +96,22 @@
         <!--Total Sales. A Card should do a trick here.-->
         <div class = "container">
             <div class = "row">
-                <div class = "col">
-                    <h3>Total Sales This Month</h3>
-                    <?php
-                        $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
-                        $stmt1 = mysqli_prepare($conn, $sql);
-                        mysqli_stmt_bind_param($stmt1, "i", $food_caterer_id);
-                        mysqli_stmt_execute($stmt1);
-                        $sales_result = mysqli_stmt_get_result($stmt1);                
+                <div class = "col card-container">
+                    <div class = "card">
+                    <h3 class = "card-title">Total Sales This Month</h3>
+                        <?php
+                            $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
+                            $stmt1 = mysqli_prepare($conn, $sql);
+                            mysqli_stmt_bind_param($stmt1, "i", $food_caterer_id);
+                            mysqli_stmt_execute($stmt1);
+                            $sales_result = mysqli_stmt_get_result($stmt1);                
 
-                        if(mysqli_num_rows($sales_result)){
-                            $row_sales = mysqli_fetch_assoc($result);
-                            echo"<strong>".$row_sales["total_sales"]."</strong>";
-                        }else{echo "<p>You have not generated a sale this month.</p>";}
-                    ?>
+                            if(mysqli_num_rows($sales_result)){
+                                $row_sales = mysqli_fetch_assoc($result);
+                                echo"<strong>".$row_sales["total_sales"]."</strong>";
+                            }else{echo "<p>You have not generated a sale this month.</p>";}
+                        ?>
+                    </div>
                 </div>
                 <!--Sales by Food Package. Use the table frontend.-->
                 <div class = "col">

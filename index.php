@@ -21,7 +21,7 @@ if (!$conn) {
     <title>iCaterMoAko | Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 
     <!-- Font awesome -->
     <link href="./assets/css/font-awesome.css" rel="stylesheet">
@@ -29,8 +29,8 @@ if (!$conn) {
     <link href="./assets/css/bootstrap.css" rel="stylesheet">   
     <!-- Slick slider -->
     <link rel="stylesheet" type="text/css" href="./assets/css/slick.css">    
-    <!-- Date Picker
-    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-datepicker.css">    -->
+    <!-- Date Picker -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-datepicker.css">
      <!-- Gallery Lightbox -->
     <link href="./assets/css/magnific-popup.css" rel="stylesheet"> 
     <!-- Theme color -->
@@ -767,12 +767,12 @@ if (!$conn) {
                       </div>
                       <div class="col-md-12">
                       <div class="form-group">                        
-                          <input type="number" name="estHeadcount" class="form-control" placeholder="Estimated Headcount">
+                          <input type="number" class="form-control" placeholder="Estimated Headcount">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="date" name="date" class="form-control" id="datepicker" placeholder="Date">              
+                          <input type="text" name="date" class="form-control" id="datepicker" placeholder="Date">              
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -1318,8 +1318,8 @@ if (!$conn) {
   <script type="text/javascript" src="./assets/js/simple-animated-counter.js"></script>
   <!-- Gallery Lightbox -->
   <script type="text/javascript" src="./assets/js/jquery.magnific-popup.min.js"></script>
-  <!-- Date Picker
-  <script type="text/javascript" src="./assets/js/bootstrap-datepicker.js"></script>  -->
+   <!-- Date Picker -->
+  <script type="text/javascript" src="./assets/js/bootstrap-datepicker.js"></script>
   <!-- Ajax contact form  -->
   <script type="text/javascript" src="./assets/js/app.js"></script>
  

@@ -100,8 +100,8 @@ if (!$conn) {
             <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
             <li><a href="pages/login.php">SIGN OUT</a></li>
-          </ul>                            
-        </div><!--/.nav-collapse -->       
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>          
     </nav> 
   </header>

@@ -1,0 +1,171 @@
+[
+    {
+        "id": 1,
+        "name": "Adobong Manok",
+        "price": 550.00,
+        "image": "images/item-1.jpg",
+        "category": "Main Dish",
+        "description": "A classic Filipino dish made with chicken simmered in a savory soy sauce and vinegar marinade, seasoned with garlic, bay leaves, and black peppercorns."
+    },
+    {
+        "id": 2,
+        "name": "Kare Kare",
+        "price": 550.00,
+        "image": "images/item-2.jpg",
+        "description": "A Filipino stew made with oxtail, tripe, and vegetables in a rich peanut sauce, served with shrimp paste on the side."
+    },
+    {
+        "id": 3,
+        "name": "Sinigang na Baboy",
+        "price": 550.00,
+        "image": "images/item-3.jpg",
+        "description": "A sour soup made with pork, tamarind, and vegetables such as radish, eggplant, and spinach."
+    },
+    {
+        "id": 4,
+        "name": "Tokwa't Baboy",
+        "price": 450.00,
+        "image": "images/item-4.jpg",
+        "description": "A Filipino appetizer made with fried tofu (tokwa) and boiled pork (baboy), served with a soy-vinegar dipping sauce."
+    },
+    {
+        "id": 5,
+        "name": "Ensaladang Talong",
+        "price": 350.00,
+        "image": "images/item-5.jpg",
+        "description": "Grilled eggplant salad with tomatoes, onions, and salted eggs, dressed with vinegar and fish sauce."
+    },
+    {
+        "id": 7,
+        "name": "Lumpiang Shanghai",
+        "price": 450.00,
+        "image": "images/item-7.jpg",
+        "description": "Crispy Filipino-style spring rolls filled with ground pork, carrots, and spices. Served with sweet and sour sauce."
+    },
+    {
+        "id": 8,
+        "name": "Bibingka",
+        "price": 50.00,
+        "image": "images/item-8.jpg",
+        "description": "A traditional Filipino rice cake made with glutinous rice flour, coconut milk, and topped with salted eggs and grated cheese."
+    },
+    {
+        "id": 9,
+        "name": "Leche Flan",
+        "price": 69.00,
+        "image": "images/item-9.jpg",
+        "description": "A rich and creamy caramel custard dessert made with egg yolks, condensed milk, and caramelized sugar."
+    },
+    {
+        "id": 10,
+        "name": "Strawberry Milkshake",
+        "price": 150.00,
+        "image": "images/item-10.jpg",
+        "description": "Experience pure delight with our strawberry milkshake, crafted from luscious strawberries and smooth, creamy milk, delivering a burst of fruity sweetness in every sip."
+    },
+    {
+        "id": 11,
+        "name": "Lemon Juice",
+        "price": 75.00,
+        "image": "images/item-11.jpg",
+        "description": "Zesty and invigorating, our lemon juice is a perfect balance of tartness and sweetness, awakening the senses with its vibrant citrus notes."
+    },
+    {
+        "id": 12,
+        "name": "Sago't Gulaman",
+        "price": 89.00,
+        "image": "images/item-12.jpg",
+        "description": "A refreshing Filipino drink made with tapioca pearls (sago) and jelly cubes (gulaman) mixed with brown sugar syrup and water."
+    },
+    {
+        "id": 13,
+        "name": "Halo Halo",
+        "price": 89.00,
+        "image": "images/item-13.jpg",
+        "description": "A popular Filipino dessert consisting of a mix of shaved ice, sweetened fruits, beans, jelly, and evaporated milk, topped with a scoop of ice cream."
+    },
+    {
+        "id": 14,
+        "name": "Karioka Sweet Rice Balls",
+        "price": 350.00,
+        "image": "images/item-14.jpg",
+        "description": "Sweet rice balls deep-fried to golden perfection and coated in a luscious caramel glaze, offering a delightful blend of chewy, crunchy, and sweet flavors, a delightful Filipino street food favorite transformed into an elegant catering option."
+    },
+    {
+        "id": 15,
+        "name": "Maja Blanca",
+        "price": 400.00,
+        "image": "images/item-15.jpg",
+        "description": "A traditional Filipino coconut pudding delicately sweetened and infused with the rich flavor of coconut milk, creating a creamy, indulgent treat perfect for any occasion."
+    },
+    {
+        "id": 16,
+        "name": "Biko",
+        "price": 350.00,
+        "image": "images/item-16.jpg",
+        "description": "A classic Filipino dessert made from glutinous rice, coconut milk, and brown sugar, resulting in a sticky, caramelized rice cake that's both comforting and satisfying, ideal for those with a sweet tooth."
+    },
+    {
+        "id": 17,
+        "name": "Oreo Milkshake",
+        "price": 150.00,
+        "image": "images/item-17.jpg",
+        "description": "Indulge in creamy decadence with our Oreo milkshake, blending rich, velvety vanilla ice cream with chunks of everyone's favorite chocolate cookie for a blissful treat."
+    },
+    {
+        "id": 18,
+        "name": "Blue Rapsberry Lemonade",
+        "price": 120.00,
+        "image": "images/item-18.jpg",
+        "description": "Cool off with a twist! Our blue raspberry lemonade combines the tartness of lemonade with the bold flavor of blue raspberries, creating a refreshing beverage that's both tangy and sweet."
+    },
+    {
+        "id": 19,
+        "name": "Mango Juice",
+        "price": 120.00,
+        "image": "images/item-19.jpg",
+        "description": "Refreshingly sweet and tangy, our mango juice bursts with tropical flavor, offering a delightful taste of sunshine in every sip."
+    },
+    {
+        "id": 20,
+        "name": "Tropical Delight Package",
+        "price": 2500.00,
+        "image": "images/item-20.jpg",
+        "description": "Experience the taste of the tropics with this refreshing package, featuring tangy mango juice paired with classic Filipino favorites, including savory Adobong Manok and comforting Sinigang na Baboy, rounded off with a sweet finale of creamy Leche Flan. (Serves 4-6 people)"
+    },
+    {
+        "id": 21,
+        "name": "Fiesta Frenzy Package",
+        "price": 3000.00,
+        "image": "images/item-21.jpg",
+        "description": "Dive into a festival of flavors with this vibrant package, showcasing the zesty Blue Raspberry Lemonade alongside crispy Lumpiang Shanghai, hearty Kare Kare, and the colorful medley of textures and tastes in Halo Halo for a truly festive dining experience. (Serves 6-8 people)"
+    },
+    {
+        "id": 22,
+        "name": "Comfort Cravings Package",
+        "price": 2250.00,
+        "image": "images/item-22.jpg",
+        "description": "Indulge in the comforting delights of home with this package, offering the refreshing tang of Lemon Juice alongside the satisfying crunch of Tokwat Baboy, followed by the warm sweetness of Bibingka and the creamy richness of Maja Blanca.(Serves 4-6 people)"
+    },
+    {
+        "id": 23,
+        "name": "Sweet & Savory Sampler Package",
+        "price": 2750.00,
+        "image": "images/item-23.jpg",
+        "description": "Explore the harmonious blend of sweet and savory flavors with this sampler package, featuring the indulgent Oreo Milkshake alongside the freshness of Ensaldadang Talong, followed by the sticky sweetness of Biko and the delightful crunch of Karioka Sweet Rice Balls. (Serves 4-6 people)"
+    },
+    {
+        "id": 24,
+        "name": "Ultimate Filipino Feast Package",
+        "price": 3500.00,
+        "image": "images/item-24.jpg",
+        "description": "Elevate your dining experience with the ultimate Filipino feast, combining the refreshing Sagot Gulaman and Mango Juice with the iconic flavors of Adobong Manok and Sinigang na Baboy, capped off with the creamy indulgence of Leche Flan for a feast fit for royalty. (Serves 6-8 people)"
+    },
+    {
+        "id": 25,
+        "name": "Summer Sips & Sizzles Package",
+        "price": 3250.00,
+        "image": "images/item-25.jpg",
+        "description": "Beat the heat with this summer-inspired package, featuring the luscious Strawberry Milkshake alongside the crispy Tokwat Baboy, the icy indulgence of Halo Halo, and the refreshing tang of Blue Raspberry Lemonade, a perfect combination for a sunny day's delight. (Serves 6-8 people)"
+    }
+]

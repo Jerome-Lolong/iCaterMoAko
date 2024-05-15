@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>iCaterMoAko | Current Appointments</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -81,12 +81,6 @@
                         <a href="feedback.php" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                         FEEDBACK
-                        </a>
-                    </li>
-                    <li>
-                        <a href="blog.php" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        YOUR BLOGS
                         </a>
                     </li>
                 </ul>

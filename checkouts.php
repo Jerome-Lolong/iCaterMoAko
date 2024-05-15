@@ -1,9 +1,6 @@
 <?php
-// Database credentials
-$host = 'localhost';
-$dbname = 'test';
-$username = 'root';
-$password = '';
+// Include the connector.php file
+include "../php_controllers/connector.php";
 
 try {
     // Create a new PDO instance

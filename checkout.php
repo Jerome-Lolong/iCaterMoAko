@@ -1,15 +1,8 @@
 <?php
-// Database credentials
-$host = 'localhost';
-$dbname = 'test';
-$username = 'root';
-$password = '';
+
+include "../php_controllers/connector.php";
 
 try {
-    // Create a new PDO instance
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['payment_method']) && $_POST['payment_method'] === 'cod') {

@@ -1,15 +1,5 @@
 <?php
-$host = 'localhost'; // or '127.0.0.1' depending on your setup
-$port = 3306; // Your custom port
-$username = 'root'; // Your database username
-$password = ''; // Your database password
-$database = 'icatermoako'; // Your database name
-
-$conn = mysqli_connect($host, $username, $password, $database, $port);
-
-if (!$conn) {
-    die("Sorry, Connection cannot be established: " . mysqli_connect_error());
-}
+require "php_controllers/connector.php";
 ?>
 
 <!DOCTYPE html>
@@ -572,152 +562,44 @@ if (!$conn) {
               <h2>HIGHLY-RATED CATERERS</h2>
             </div>
 
+            <?php
+              $sql = "SELECT owner_name, business_name caterer_image_path FROM caterer_info;";
+              $result = $conn->query($sql);
+
+              if($result->num_rows > 0){
+                ?>
             <div class="mu-chef-content">
-              <ul class="mu-chef-nav">
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Aling Adela</h4>
-                      <span>Master of Adobong Manok</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-2.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Mang Kardo</h4>
-                      <span>Kare Kare Connoisseur</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-3.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Siling Labuyo</h4>
-                      <span>Sinigang Specialist</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-4.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Tatay Turo</h4>
-                      <span>Tokwa't Baboy Virtuoso</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>  
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-5.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Nanay Nene</h4>
-                      <span>Lumpia Maestro</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-6.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Manang Chitang</h4>
-                      <span>Ensaladang Talong Expert</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-7.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Inay Irene</h4>
-                      <span>Leche Flan Artisan</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>
-                
-                <li>
-                  <div class="mu-single-chef">
-                    <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-3.jpg" alt="chef img">
-                    </figure>
-                    <div class="mu-single-chef-info">
-                      <h4>Chef Bosing Benjie</h4>
-                      <span>Halo Halo Maestro</span>
-                    </div>
-                    <div class="mu-single-chef-social">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                      <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </li>                      
+              <ul class="mu-chef-nav">                
+                <?php
+                while($row = $result->fetch_assoc()){
+                  echo "
+                  <li>
+                  <div class='mu-single-chef'>
+                    <figure class='mu-single-chef-img'>
+                      <img src=".$row["caterer_image_path"]." alt='chef img'>
+                    </figure>                  
+                  ";
+                  echo "
+                  <div class='mu-single-chef-info'>
+                    <h4>".$row["owner_name"]."</h4>
+                    <span>".$row["business_name"]."</span>
+                  </div>                  
+                  ";
+                }?>
+                </div>
+                <div class="mu-single-chef-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
               </ul>
+              <?php
+              }else{
+                echo "<p>We do not have caterers yet.</p>";
+              }
+            ?>
             </div>
           </div>
         </div>

@@ -93,12 +93,13 @@
         </header>
         <!-- End header section -->
 
-        <!--Total Sales. A Card should do a trick here.-->
-        <div class = "container">
-            <div class = "row">
-                <div class = "col card-container">
-                    <div class = "card">
-                    <h3 class = "card-title">Total Sales This Month</h3>
+        <div class="container mt-5">
+        <div class="row mb-4">
+            <!-- Total Sales This Month -->
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Total Sales This Month</h3>
                         <?php
                             $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
                             $stmt1 = mysqli_prepare($conn, $sql);
@@ -107,122 +108,154 @@
                             $sales_result = mysqli_stmt_get_result($stmt1);                
 
                             if(mysqli_num_rows($sales_result)){
-                                $row_sales = mysqli_fetch_assoc($result);
-                                echo"<strong>".$row_sales["total_sales"]."</strong>";
-                            }else{echo "<p>You have not generated a sale this month.</p>";}
+                                $row_sales = mysqli_fetch_assoc($sales_result);
+                                echo "<strong>".$row_sales["total_sales"]."</strong>";
+                            } else {
+                                echo "<p>You have not generated a sale this month.</p>";
+                            }
                         ?>
                     </div>
                 </div>
-                <!--Sales by Food Package. Use the table frontend.-->
-                <div class = "col">
-                    <h3>Sales by Food Package</h3>
-                    <?php
-                        $sql = "SELECT food_pckgeninfo_id, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
-                        $stmt2 = mysqli_prepare($conn, $sql);
-                        mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
-                        mysqli_stmt_execute($stmt2);
-                        $fp_result = mysqli_stmt_get_result($stmt2);                
-
-                        if(mysqli_num_rows($fp_result) > 0){
-                    ?>
-                    <table>
-                        <th>Food Package ID</th>
-                        <th>Package Name</th>
-                        <th>Number of Orders</th>
-                        <th>Subtotal</th>
-                        <?php
-                            while ($row_fp = mysqli_fetch_assoc($fp_result)){
-                                echo "<tr>";
-                                echo "<td>".$row_fp['food_pckgen_info']."</td>";
-                                echo "<td>".$row_fp['package_name']."</td>";
-                                echo "<td>".$row_fp['number_of_orders']."</td>";
-                                echo "<td>".$row_fp['sales_per_foodpackage']."</td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                    </table>  
-                    <?php
-                        }else{
-                            echo "<p>You don't have Your Food Packages Yet. Go to Food Packages and Start adding new food packages.</p>";
-                        }
-                    ?>          
-                </div>                
             </div>
-            <div class = "row">
-            <!--Number of Customers-->
-                <div class = "col">
-                    <h3>Number of Customers Ordering From Your Business</h3>
-                    <?php
-                        $stmt3 = mysqli_prepare($conn, "SELECT COUNT(*) AS total_customers FROM appointment_schedule WHERE caterer_id = ?");
-                        mysqli_stmt_bind_param($stmt3, "i", $food_caterer_id);
-                        mysqli_stmt_execute($stmt3);
-                        $customers = mysqli_stmt_get_result($stmt3);
-                        
-                        if(mysqli_num_rows($customers) > 0){
-                            $customer_row = mysqli_fetch_assoc($customers);
-                            echo "<strong>".$customer_row['total_customers']."</strong>";
-                        }
-                    ?>
-                </div>
-                <!--Pending Appointments.-->
-                <div class = "col">
-                <h3>Your Pending Appointments</h3>
-                    <?php
-                    //To be changed with a foreign key.
-                        $stmt4 = mysqli_prepare($conn, "SELECT appointment_id, event_name, CONCAT(first_name, ' ', last_name) AS organizers, event_date, event_time, number_of_guests FROM appointment_schedule WHERE caterer_id = ? LIMIT 5");
-                        mysqli_stmt_bind_param($stmt4, "i", $food_caterer_id);
-                        mysqli_stmt_execute($stmt4);
-                        $ap_result = mysqli_stmt_get_result($stmt4);                
 
-                        if(mysqli_num_rows($ap_result) > 0){
-                    ?>
-                    <table>
-                        <th>Appointment ID</th>
-                        <th>Event Name</th>
-                        <th>Organizers</th>
-                        <th>Event Date</th>
-                        <th>Event Time</th>
-                        <th>Number of Guests</th>
+            <!-- Sales by Food Package -->
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Sales by Food Package</h3>
                         <?php
-                            while ($row_ap = mysqli_fetch_assoc($fp_result)){
-                                echo "<tr>";
-                                echo "<td>".$row_ap['appointment_id']."</td>";
-                                echo "<td>".$row_ap['event_name']."</td>";
-                                echo "<td>".$row_ap['organizers']."</td>";
-                                echo "<td>".$row_ap['event_date']."</td>";
-                                echo "<td>".$row_ap['event_time']."</td>";
-                                echo "<td>".$row_ap['number_of_guests']."</td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                    </table>  
-                    <?php
-                        }else{
-                            echo "<p>You have no Pending Appointments Yet.</p>";
-                        }
-                    ?> 
-                </div>         
-                <!--Feedback Average-->
-                <div class = "col">
-                    <h3>Average Feedback on Your Business</h3>
-                    <?php
-                        $stmt5 = mysqli_prepare($conn, "SELECT AVG(rating) AS service_rating FROM feedback WHERE caterer_id = ?;");
-                        mysqli_stmt_bind_param($stmt5, "i", $food_caterer_id);
-                        mysqli_stmt_execute($stmt5);
-                        $feedback = mysqli_stmt_get_result($stmt5);
+                            $sql = "SELECT food_pckgeninfo_id, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
+                            $stmt2 = mysqli_prepare($conn, $sql);
+                            mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
+                            mysqli_stmt_execute($stmt2);
+                            $fp_result = mysqli_stmt_get_result($stmt2);                
 
-                        if(mysqli_num_rows($feedback) > 0){
-                            $feedbackRow = mysqli_fetch_assoc($feedback);
-                            echo "<strong>".$feedbackRow['service_rating']."</strong>";
-                        }
-                    ?>
-                    
-                    <?php
-                        echo "<strong>".$average_rating."</strong>";
-                    ?>
-                </div>            
+                            if(mysqli_num_rows($fp_result) > 0){
+                        ?>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Food Package ID</th>
+                                    <th>Package Name</th>
+                                    <th>Number of Orders</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    while ($row_fp = mysqli_fetch_assoc($fp_result)){
+                                        echo "<tr>";
+                                        echo "<td>".$row_fp['food_pckgeninfo_id']."</td>";
+                                        echo "<td>".$row_fp['package_name']."</td>";
+                                        echo "<td>".$row_fp['number_of_orders']."</td>";
+                                        echo "<td>".$row_fp['sales_per_foodpackage']."</td>";
+                                        echo "</tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>  
+                        <?php
+                            } else {
+                                echo "<p>You don't have any food packages yet. Go to Food Packages and start adding new food packages.</p>";
+                            }
+                        ?>          
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="row mb-4">
+            <!-- Your Pending Appointments -->
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Your Pending Appointments</h3>
+                        <?php
+                            $stmt4 = mysqli_prepare($conn, "SELECT appointment_id, event_name, CONCAT(first_name, ' ', last_name) AS organizers, event_date, event_time, number_of_guests FROM appointment_schedule WHERE caterer_id = ? LIMIT 5");
+                            mysqli_stmt_bind_param($stmt4, "i", $food_caterer_id);
+                            mysqli_stmt_execute($stmt4);
+                            $ap_result = mysqli_stmt_get_result($stmt4);                
+
+                            if(mysqli_num_rows($ap_result) > 0){
+                        ?>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Appointment ID</th>
+                                    <th>Event Name</th>
+                                    <th>Organizers</th>
+                                    <th>Event Date</th>
+                                    <th>Event Time</th>
+                                    <th>Number of Guests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    while ($row_ap = mysqli_fetch_assoc($ap_result)){
+                                        echo "<tr>";
+                                        echo "<td>".$row_ap['appointment_id']."</td>";
+                                        echo "<td>".$row_ap['event_name']."</td>";
+                                        echo "<td>".$row_ap['organizers']."</td>";
+                                        echo "<td>".$row_ap['event_date']."</td>";
+                                        echo "<td>".$row_ap['event_time']."</td>";
+                                        echo "<td>".$row_ap['number_of_guests']."</td>";
+                                        echo "</tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>  
+                        <?php
+                            } else {
+                                echo "<p>You have no pending appointments yet.</p>";
+                            }
+                        ?> 
+                    </div>
+                </div>
+            </div>   
+
+            <!-- Average Feedback on Your Business -->
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Average Feedback on Your Business</h3>
+                        <?php
+                            $stmt5 = mysqli_prepare($conn, "SELECT AVG(rating) AS service_rating FROM feedback WHERE caterer_id = ?;");
+                            mysqli_stmt_bind_param($stmt5, "i", $food_caterer_id);
+                            mysqli_stmt_execute($stmt5);
+                            $feedback = mysqli_stmt_get_result($stmt5);
+
+                            if(mysqli_num_rows($feedback) > 0){
+                                $feedbackRow = mysqli_fetch_assoc($feedback);
+                                echo "<strong>".$feedbackRow['service_rating']."</strong>";
+                            } else {
+                                echo "<p>No feedback received yet.</p>";
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
+        <!-- New container for charts -->
+        <div class="row mb-4">
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Sales Per Month</h3>
+                        <canvas id="salesPerMonthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Pending vs Accomplished Appointments</h3>
+                        <canvas id="appointmentsPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- jQuery library -->
         <script src="/assets/js/jquery.min.js"></script>  
@@ -241,5 +274,8 @@
         
         <!-- Custom js -->
         <script src="/assets/js/custom.js"></script> 
+
+        <!-- Chart.js scripts -->
+        <script src = "../assets/js/chart.js"></script>
     </body>
 </html>

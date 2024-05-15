@@ -1057,7 +1057,7 @@ if (!$conn) {
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-2.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Aling Adela</h4>
@@ -1075,7 +1075,7 @@ if (!$conn) {
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-2.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Mang Kardo</h4>
@@ -1093,7 +1093,7 @@ if (!$conn) {
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-5.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-3.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Siling Labuyo</h4>
@@ -1133,7 +1133,7 @@ if (!$conn) {
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Nanay Nene</h4>
-                      <span>Lumpiang Shanghai Maestro</span>
+                      <span>Lumpia Maestro</span>
                     </div>
                     <div class="mu-single-chef-social">
                       <a href="#"><i class="fa fa-facebook"></i></a>
@@ -1147,7 +1147,7 @@ if (!$conn) {
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-1.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-6.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Manang Chitang</h4>
@@ -1165,7 +1165,7 @@ if (!$conn) {
                 <li>
                   <div class="mu-single-chef">
                     <figure class="mu-single-chef-img">
-                      <img src="assets/img/chef/chef-2.jpg" alt="chef img">
+                      <img src="assets/img/chef/chef-7.jpg" alt="chef img">
                     </figure>
                     <div class="mu-single-chef-info">
                       <h4>Chef Inay Irene</h4>

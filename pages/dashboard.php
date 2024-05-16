@@ -1,13 +1,11 @@
-<?php 
-/*
+<?php /*
     session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
     }
-
-    $food_caterer_id = $_SESSION['food_caterer_id'];
-    */
+*/
+    //$food_caterer_id = $_SESSION['food_caterer_id'];
     require "../php_controllers/connector.php";
 ?>
 <!DOCTYPE html>

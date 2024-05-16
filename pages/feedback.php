@@ -1,9 +1,9 @@
-<?php
+<?php /*
     session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
-    }
+    } */
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -99,7 +99,7 @@
         </header>
         <!-- End header section -->
         <?php
-            $food_caterer_id = $_SESSION['food_caterer_id'];
+            //$food_caterer_id = $_SESSION['food_caterer_id'];
             require "../php_controllers/connector.php";
 
             $sql = "SELECT feedback.feedback_id, appointment_schedule.appointment_date, feedback.rating, feedback.feedback_message FROM feedback INNER JOIN appointment_schedule ON feedback.appointment_id = appointment_schedule.appointment_id WHERE caterer_id = ?;";

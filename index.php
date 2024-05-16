@@ -89,7 +89,7 @@ require "php_controllers/connector.php";
             <li><a href="#mu-gallery">GALLERY</a></li>
             <li><a href="#mu-chef">OUR CATERERS</a></li> 
             <li><a href="#mu-contact">CONTACT</a></li> 
-            <li><a href="pages/login.php">SIGN OUT</a></li>
+            <li><a href="pages/login.php">JOIN OUR TEAM</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>          

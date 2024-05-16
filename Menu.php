@@ -71,14 +71,14 @@
 
          <div id="navbar" class="navbar-collapse collapse">
             <ul id="top-menu" class="nav navbar-nav navbar-right mu-main-nav">
-              <li><a href="index.html">HOME</a></li>
+              <li><a href="index.php">HOME</a></li>
               <li><a href="#mu-about-us">ABOUT US</a></li>                       
               <li><a href="#mu-restaurant-menu">MENU</a></li>                       
               <li><a href="#mu-reservation">RESERVATION</a></li>                       
               <li><a href="#mu-gallery">GALLERY</a></li>
               <li><a href="#mu-chef">OUR CHEFS</a></li> 
               <li><a href="#mu-contact">CONTACT</a></li> 
-              <li><a href="#mu-contact">SIGN OUT</a></li> 
+              <li><a href="#mu-contact">JOIN OUR TEAM</a></li> 
               <br>
               <div class="iconCart">
                 <img src="images/icon.png">

@@ -82,7 +82,7 @@
             <li><a href="../index.php#mu-gallery">GALLERY</a></li>
             <li><a href="../index.php#mu-chef">OUR CATERERS</a></li> 
             <li><a href="../index.php#mu-contact">CONTACT</a></li> 
-            <li><a href="login.php">LOG IN</a></li> <!-- PLEASE PUT THE link of the log in page -->
+            <li><a href="login.php">JOIN OUR TEAM</a></li> <!-- PLEASE PUT THE link of the log in page -->
           </ul>                            
         </div><!--/.nav-collapse -->       
       </div>          
@@ -104,10 +104,11 @@
 
   <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-      $emaillogin = 'email';
-      $password = 'password';
+      $emaillogin = $_POST['email'];
+      $password = $_POST['password'];
 
       $password = hash('sha256', $password);
+      require_once "../php_controllers/user_controller.php";
 
       $result = login($emaillogin, $password);
 

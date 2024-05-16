@@ -1,9 +1,9 @@
-<?php 
+<?php /*
     session_start();
     if(!isset($_SESSION['food_caterer_id'])){
         header("Location: login.php");
         exit();
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>

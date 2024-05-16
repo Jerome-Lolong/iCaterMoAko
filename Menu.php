@@ -171,7 +171,7 @@
             <a href="#"><span class="fa fa-youtube"></span></a>
           </div>
           <div class="mu-footer-copyright">
-            <p>&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All right reserved.</p>
+            <p>&copy; Copyright @2024 iCaterMoAko. All right reserved.</p>
           </div>         
         </div>
       </div>

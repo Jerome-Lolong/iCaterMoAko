@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: May 16, 2024 at 10:02 AM
+-- Generation Time: May 16, 2024 at 05:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,13 +61,21 @@ CREATE TABLE `caterer_info` (
   `caterer_id` int(11) NOT NULL,
   `owner_name` varchar(255) NOT NULL,
   `business_name` varchar(255) NOT NULL,
-  `caterer_image_path` varchar(255) NOT NULL,
+  `caterer_image_path` varchar(255) DEFAULT NULL,
   `address` varchar(255) NOT NULL,
   `tin` varchar(20) NOT NULL,
   `date_founded` datetime NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `caterer_info`
+--
+
+INSERT INTO `caterer_info` (`caterer_id`, `owner_name`, `business_name`, `caterer_image_path`, `address`, `tin`, `date_founded`, `email`, `password`) VALUES
+(1, 'Juan Dela Cruz', 'Juan\'s Bistro', NULL, '#22, Bitano Legazpi City', '123-456-7890', '2024-05-16 13:00:00', 'juanbistro@gmail.com', '1234567890'),
+(2, 'Jose Delos Santos', 'Ang Pinakamasarap na Catering', NULL, '#11, Gogon, Legazpi City', '234-567=8901', '2024-05-16 10:09:19', 'pinakamasarap@gmail.com', '0987654321');
 
 -- --------------------------------------------------------
 
@@ -77,15 +85,23 @@ CREATE TABLE `caterer_info` (
 
 CREATE TABLE `event_information` (
   `customer_id` int(11) NOT NULL,
-  `last_name` int(11) NOT NULL,
-  `first_name` int(11) NOT NULL,
-  `contact_no` int(11) NOT NULL,
-  `event_name` int(11) NOT NULL,
-  `event_location` int(11) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `contact_no` varchar(255) NOT NULL,
+  `event_name` varchar(255) NOT NULL,
+  `event_location` varchar(255) NOT NULL,
   `event_date` date NOT NULL,
   `description` varchar(255) NOT NULL,
   `event_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_information`
+--
+
+INSERT INTO `event_information` (`customer_id`, `last_name`, `first_name`, `contact_no`, `event_name`, `event_location`, `event_date`, `description`, `event_time`) VALUES
+(1, 'Reyes', 'Anabel', '09123456789', 'A Seminar Related to IT Trends', 'Proxy by the Oriental', '2024-05-29', 'wertyuiopasdfghjkl;zxcvbnm,', '13:00:00'),
+(2, 'Santos', 'Joselito', '09987654321', 'A Meeting of the Executive and Managers of Santos Company', 'Santos COmpany Headquarters', '2024-05-26', 'mnbvcxzlkjhgfdsapoiuytrq', '15:00:00');
 
 -- --------------------------------------------------------
 
@@ -117,6 +133,14 @@ CREATE TABLE `food_packages` (
   `servings_max` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='This is where the php will display specific information about food packages';
 
+--
+-- Dumping data for table `food_packages`
+--
+
+INSERT INTO `food_packages` (`food_package_id`, `food_pckgen_info`, `name`, `description`, `imagepath`, `servings_min`, `servings_max`) VALUES
+(1, 1, 'Litson Baboy', 'qwertyu[lkjhgfdsazxcvbnm', '', 2, 20),
+(2, 2, 'Assorted Gulay', 'mmnbvcxzlkjhgfdsapoiuytrewq', '', 8, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -132,6 +156,14 @@ CREATE TABLE `food_pck_gen_info` (
   `orders_taken` int(11) NOT NULL,
   `sales_per_foodpackage` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `food_pck_gen_info`
+--
+
+INSERT INTO `food_pck_gen_info` (`food_pckgeninfo_id`, `food_caterer_id`, `package_name`, `details`, `price`, `orders_taken`, `sales_per_foodpackage`) VALUES
+(1, 1, 'Filipino Fiesta', 'qwertyui[asdfghjzxcvbnm', 15000.00, 6, 90000.00),
+(2, 1, 'Corporate Foods', 'mnbvcxzlkjhgfdsapoiuytrewq', 20000.00, 10, 200000.00);
 
 -- --------------------------------------------------------
 
@@ -255,13 +287,13 @@ ALTER TABLE `appointment_schedule`
 -- AUTO_INCREMENT for table `caterer_info`
 --
 ALTER TABLE `caterer_info`
-  MODIFY `caterer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `caterer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `event_information`
 --
 ALTER TABLE `event_information`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -273,13 +305,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food_packages`
 --
 ALTER TABLE `food_packages`
-  MODIFY `food_package_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `food_package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `food_pck_gen_info`
 --
 ALTER TABLE `food_pck_gen_info`
-  MODIFY `food_pckgeninfo_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `food_pckgeninfo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`

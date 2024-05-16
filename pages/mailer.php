@@ -52,5 +52,3 @@
         http_response_code(403);
         echo "There was a problem with your submission, please try again.";
     }
-
-?>

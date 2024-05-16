@@ -95,7 +95,7 @@
         <!-- End header section -->
         <main>
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light container mt-5">
-        <div class="row mb-4">
+        <div class="row">
             <!-- Total Sales This Month -->
             <div class="col-md-24 mb-3">
                 <div class="card">
@@ -173,7 +173,7 @@
             </div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row">
             <!-- Your Pending Appointments -->
             <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">

@@ -129,6 +129,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Sales by Food Package</h5>
                         <?php
+                        try{
                             $sql = "SELECT food_pckgeninfo_id, package_name, orders_taken, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
                             $stmt2 = mysqli_prepare($conn, $sql);
                             mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
@@ -163,6 +164,9 @@
                             } else {
                                 echo "<p>You don't have any food packages yet. Go to Food Packages and start adding new food packages.</p>";
                             }
+                        }catch(Exception){
+                            throw new Exception("Cannot retrieve from Database right now. Please try again later.");
+                        }
                         ?>          
                     </div>
                 </div>

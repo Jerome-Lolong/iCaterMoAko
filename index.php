@@ -349,141 +349,31 @@ require "php_controllers/connector.php";
             
               <!-- Start gallery image -->
               <div class="mu-gallery-body">
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">
-                    <div class="mu-single-gallery-item">
-	                    <figure class="mu-single-gallery-img">
-	                      <a class="mu-imglink" href="assets/img/gallery/1.jpg">
-                          <img alt="img" src="assets/img/gallery/1.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-	                    </figure>            
-                  	</div>
-                </div>
-                <!-- End single gallery image -->
+              <?php
+                $image_data = $conn->query("SELECT imagepath FROM food_packages;");
 
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">
-                  	 <div class="mu-single-gallery-item">
-                        <figure class="mu-single-gallery-img">
-                          <a class="mu-imglink" href="assets/img/gallery/2.jpg">
-                            <img alt="img" src="assets/img/gallery/2.jpg">
-                             <div class="mu-single-gallery-info">
-                                <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                            </div> 
-                          </a>
-                        </figure>            
-                    </div>
-                </div>               
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	 <div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/3.jpg">
-                          <img alt="img" src="assets/img/gallery/3.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>               
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	<div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/4.jpg">
-                          <img alt="img" src="assets/img/gallery/4.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	<div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/5.jpg">
-                          <img alt="img" src="assets/img/gallery/5.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>               
-                <!-- End single gallery image -->  
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                   <div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/6.jpg">
-                          <img alt="img" src="assets/img/gallery/6.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	<div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/7.jpg">
-                          <img alt="img" src="assets/img/gallery/7.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>               
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	<div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/8.jpg">
-                          <img alt="img" src="assets/img/gallery/8.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>               
-                <!-- End single gallery image -->
-
-                <!-- start single gallery image -->
-                <div class="mu-single-gallery col-md-4">                  
-                  	<div class="mu-single-gallery-item">
-                      <figure class="mu-single-gallery-img">
-                        <a class="mu-imglink" href="assets/img/gallery/9.jpg">
-                          <img alt="img" src="assets/img/gallery/9.jpg">
-                           <div class="mu-single-gallery-info">
-                              <img class="mu-view-btn" src="assets/img/plus.png" alt="plus icon img">
-                          </div> 
-                        </a>
-                      </figure>            
-                    </div>
-                </div>
-                <!-- End single gallery image -->  
-
+                if($image_data->num_rows > 0){
+                  while($row = $image_data->fetch_assoc()){
+                    echo "<div class='mu-single-gallery col-md-4'>";
+                    echo "<div class='mu-single-gallery-item'>";
+	                  echo "  <figure class='mu-single-gallery-img'>";
+                    echo "    <a class='mu-imglink' href='".$row["imagepath"]."'>";
+	                      
+                    echo "      <img alt='img' src='".$row["imagepath"]."'>";
+                    echo "       <div class='mu-single-gallery-info'>";
+                    echo "          <img class='mu-view-btn' src='".$row["imagepath"]."' alt='plus icon img'>";
+                    echo "
+                                </div> 
+                                </a>
+                              </figure>            
+                            </div>
+                        </div>                       
+                    ";                 
+                  }
+                }else{
+                  echo "<p>We have no images, for now.</p>";
+                }
+              ?>
               </div>
             </div>
           </div>
@@ -509,38 +399,29 @@ require "php_controllers/connector.php";
               <!-- testimonial content -->
               <div class="mu-testimonial-content">
                 <!-- testimonial slider -->
-                <ul class="mu-testimonial-slider">
-                  <li>
-                    <div class="mu-testimonial-single">                   
-                      <div class="mu-testimonial-info">
-                        <p>"I hosted a gathering with the Tropical Delight Package, and everyone couldn't stop raving about the flavors! The mango juice was so refreshing, and the Adobong Manok and Sinigang na Baboy were cooked to perfection. And don't even get me started on the Leche Flan – it was heavenly!"</p>
-                      </div>
-                      <div class="mu-testimonial-bio">
-                        <p>- David Muller</p>                      
-                      </div>
-                    </div>
-                  </li>
-                   <li>
-                    <div class="mu-testimonial-single">                   
-                      <div class="mu-testimonial-info">
-                        <p>"The Fiesta Frenzy Package was a hit at our family reunion! The Blue Raspberry Lemonade was a unique twist, and paired perfectly with the crispy Lumpiang Shanghai. Kare Kare was a crowd favorite, and ending the meal with Halo Halo brought back childhood memories. Highly recommend!"</p>
-                      </div>
-                      <div class="mu-testimonial-bio">
-                        <p>- David Muller</p>                      
-                      </div>
-                    </div>
-                  </li>
-                   <li>
-                    <div class="mu-testimonial-single">                   
-                      <div class="mu-testimonial-info">
-                        <p>"I ordered the Comfort Cravings Package for a cozy dinner at home, and it exceeded my expectations! The Lemon Juice added a refreshing touch, and the Tokwat Baboy was crispy and flavorful. The Bibingka and Maja Blanca were the perfect ending to a comforting meal. Will definitely order again!"</p>
-                      </div>
-                      <div class="mu-testimonial-bio">
-                        <p>- David Muller</p>                      
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                <?php
+                  $testimonial = "SELECT application_feedback.application_message, event_information.last_name, event_information.first_name FROM application_feedback INNER JOIN event_information ON application_feedback.customer_id = event_information.customer_id LIMIT 5;";
+                  $result = $conn->query($testimonial);
+                  if($result->num_rows > 0){?>
+                    <ul class="mu-testimonial-slider">
+                      <?php
+                        while($result->fetch_assoc()){
+                          echo "<li>";
+                          echo "  <div class='mu-testimonial-single'>";
+                          echo "    <div class='mu-testimonial-info'><p>".$row["application_feedback.application_message"]."</p></div>";
+                          echo "    <div class='mu-testimonial-bio'>
+                                <p>- ".$row["event_information.first_name"]." ".$row["event_information.last_name"]."</p>                      
+                              </div>
+                            </div>
+                          </li>
+                          ";
+                      }?>
+                    </ul>
+                    <?php
+                  }else{
+                    echo "<p>We have no testimonials, yet.</p>";
+                  }
+                ?>
               </div>
             </div>
           </div>
@@ -583,17 +464,17 @@ require "php_controllers/connector.php";
                   <div class='mu-single-chef-info'>
                     <h4>".$row["owner_name"]."</h4>
                     <span>".$row["business_name"]."</span>
-                  </div>                  
+                  </div>    
+                  <div>              
+                    <div class='mu-single-chef-social'>
+                      <a href='#><i class='fa fa-facebook'></i></a>
+                      <a href='#'><i class='fa fa-twitter'></i></a>
+                      <a href='#'><i class='fa fa-google-plus'></i></a>
+                      <a href='#'><i class='fa fa-linkedin'></i></a>
+                    </div>
+                  </div>
                   ";
                 }?>
-                </div>
-                <div class="mu-single-chef-social">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-google-plus"></i></a>
-                  <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
               </ul>
               <?php
               }else{

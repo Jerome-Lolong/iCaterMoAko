@@ -93,16 +93,17 @@
         </div>
         </header>
         <!-- End header section -->
-
-        <div class="container mt-5">
+        <main>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light container mt-5">
         <div class="row mb-4">
             <!-- Total Sales This Month -->
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Total Sales This Month</h3>
+                        <h5 class="card-title">Total Sales This Month</h5>
                         <?php
-                            $sql = "SELECT total_sales FROM catering_sales WHERE caterer_id = ?;";
+                        try{
+                            $sql = "SELECT total_price FROM orders WHERE order_caterer_id = ?;";
                             $stmt1 = mysqli_prepare($conn, $sql);
                             mysqli_stmt_bind_param($stmt1, "i", $food_caterer_id);
                             mysqli_stmt_execute($stmt1);
@@ -110,22 +111,25 @@
 
                             if(mysqli_num_rows($sales_result)){
                                 $row_sales = mysqli_fetch_assoc($sales_result);
-                                echo "<strong>".$row_sales["total_sales"]."</strong>";
+                                echo "<strong>".$row_sales["total_price"]."</strong>";
                             } else {
                                 echo "<p>You have not generated a sale this month.</p>";
                             }
+                        }catch(Exception){
+                            echo "Cannot retrieve from database right now. Please Try Again Later.";
+                        }
                         ?>
                     </div>
                 </div>
             </div>
 
             <!-- Sales by Food Package -->
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Sales by Food Package</h3>
+                        <h5 class="card-title">Sales by Food Package</h5>
                         <?php
-                            $sql = "SELECT food_pckgeninfo_id, package_name, number_of_orders, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
+                            $sql = "SELECT food_pckgeninfo_id, package_name, orders_taken, sales_per_foodpackage FROM food_pck_gen_info WHERE food_caterer_id = ? LIMIT 5";
                             $stmt2 = mysqli_prepare($conn, $sql);
                             mysqli_stmt_bind_param($stmt2, "i", $food_caterer_id);
                             mysqli_stmt_execute($stmt2);
@@ -148,7 +152,7 @@
                                         echo "<tr>";
                                         echo "<td>".$row_fp['food_pckgeninfo_id']."</td>";
                                         echo "<td>".$row_fp['package_name']."</td>";
-                                        echo "<td>".$row_fp['number_of_orders']."</td>";
+                                        echo "<td>".$row_fp['orders_taken']."</td>";
                                         echo "<td>".$row_fp['sales_per_foodpackage']."</td>";
                                         echo "</tr>";
                                     }
@@ -167,12 +171,12 @@
 
         <div class="row mb-4">
             <!-- Your Pending Appointments -->
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Your Pending Appointments</h3>
                         <?php
-                            $stmt4 = mysqli_prepare($conn, "SELECT appointment_id, event_name, CONCAT(first_name, ' ', last_name) AS organizers, event_date, event_time, number_of_guests FROM appointment_schedule WHERE caterer_id = ? LIMIT 5");
+                            $stmt4 = mysqli_prepare($conn, "SELECT appointment_schedule.appointment_id, event_information.event_name, CONCAT(event_information.first_name, ' ', event_information.last_name) AS organizers, event_information.event_date, event_information.event_time, appointment_schedule.number_of_guests FROM appointment_schedule INNER JOIN event_information ON appointment_schedule.event_id = event_information.customer_id WHERE caterer_id = ? LIMIT 5");
                             mysqli_stmt_bind_param($stmt4, "i", $food_caterer_id);
                             mysqli_stmt_execute($stmt4);
                             $ap_result = mysqli_stmt_get_result($stmt4);                
@@ -194,12 +198,12 @@
                                 <?php
                                     while ($row_ap = mysqli_fetch_assoc($ap_result)){
                                         echo "<tr>";
-                                        echo "<td>".$row_ap['appointment_id']."</td>";
-                                        echo "<td>".$row_ap['event_name']."</td>";
+                                        echo "<td>".$row_ap['appointment_schedule.appointment_id']."</td>";
+                                        echo "<td>".$row_ap['event_information.event_name']."</td>";
                                         echo "<td>".$row_ap['organizers']."</td>";
-                                        echo "<td>".$row_ap['event_date']."</td>";
-                                        echo "<td>".$row_ap['event_time']."</td>";
-                                        echo "<td>".$row_ap['number_of_guests']."</td>";
+                                        echo "<td>".$row_ap['event_information.event_date']."</td>";
+                                        echo "<td>".$row_ap['event_information.event_time']."</td>";
+                                        echo "<td>".$row_ap['appointment_schedule.number_of_guests']."</td>";
                                         echo "</tr>";
                                     }
                                 ?>
@@ -215,7 +219,7 @@
             </div>   
 
             <!-- Average Feedback on Your Business -->
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Average Feedback on Your Business</h3>
@@ -239,7 +243,7 @@
 
         <!-- New container for charts -->
         <div class="row mb-4">
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Sales Per Month</h3>
@@ -247,7 +251,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-16 col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Pending vs Accomplished Appointments</h3>
@@ -257,6 +261,7 @@
             </div>
         </div>
     </div>
+    </main>
 
         <!-- jQuery library -->
         <script src="../assets/js/jquery.min.js"></script>  

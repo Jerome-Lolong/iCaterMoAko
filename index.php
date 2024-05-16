@@ -1033,6 +1033,15 @@ require "php_controllers/connector.php";
               <ul class="mu-chef-nav">                
                 <?php
                 while($row = $result->fetch_assoc()){
+                  if($row["caterer_image_path"] == NULL){
+                    echo "
+                    <li>
+                    <div class='mu-single-chef'>
+                      <figure class='mu-single-chef-img'>
+                        <img src="."/images/caterers/765-default-avatar.png"."alt='chef img'>
+                      </figure>                  
+                    ";                    
+                  }
                   echo "
                   <li>
                   <div class='mu-single-chef'>
@@ -1053,8 +1062,10 @@ require "php_controllers/connector.php";
                       <a href='#'><i class='fa fa-linkedin'></i></a>
                     </div>
                   </div>
+                  </li>
                   ";
                 }?>
+              </ul>
                 </div>
                 <!-- <div class="mu-single-chef-social">
                   <a href="#"><i class="fa fa-facebook"></i></a>

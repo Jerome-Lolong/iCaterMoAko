@@ -97,7 +97,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light container mt-5">
         <div class="row mb-4">
             <!-- Total Sales This Month -->
-            <div class="col-lg-16 col-md-24 mb-3">
+            <div class="col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Total Sales This Month</h5>
@@ -124,7 +124,7 @@
             </div>
 
             <!-- Sales by Food Package -->
-            <div class="col-lg-16 col-md-24 mb-3">
+            <div class="col-md-24 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Sales by Food Package</h5>

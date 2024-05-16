@@ -114,7 +114,7 @@ require "php_controllers/connector.php";
             <h2 class="mu-slider-title">To iCaterMoAko</h2>   
             <p></p>       
             <a href="#mu-reservation" class="mu-readmore-btn mu-reservation-btn">BOOK A TABLE</a>
-            <a href="Menu.html" class="mu-readmore-btn mu-reservation-btn">Shop Now!</a>
+            <a href="Menu.html" class="mu-readmore-btn mu-reservation-btn">Shop now</a>
           </div>
           <!-- / Top slider content -->
         </div>
@@ -563,7 +563,7 @@ require "php_controllers/connector.php";
             </div>
 
             <?php
-              $sql = "SELECT owner_name, business_name caterer_image_path FROM caterer_info;";
+              $sql = "SELECT owner_name, business_name, caterer_image_path FROM caterer_info;";
               $result = $conn->query($sql);
 
               if($result->num_rows > 0){
@@ -587,20 +587,19 @@ require "php_controllers/connector.php";
                   ";
                 }?>
                 </div>
-                <div class="mu-single-chef-social">
+                <!-- <div class="mu-single-chef-social">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-google-plus"></i></a>
                   <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
+                </div> -->
               </div>
-              </ul>
               <?php
               }else{
                 echo "<p>We do not have caterers yet.</p>";
               }
             ?>
-            </div>
+            
           </div>
         </div>
       </div>

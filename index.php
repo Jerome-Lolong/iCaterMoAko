@@ -114,7 +114,7 @@ require "php_controllers/connector.php";
             <h2 class="mu-slider-title">To iCaterMoAko</h2>   
             <p></p>       
             <a href="#mu-reservation" class="mu-readmore-btn mu-reservation-btn">BOOK A TABLE</a>
-            <a href="Menu.html" class="mu-readmore-btn mu-reservation-btn">Shop now</a>
+            <a href="Menu.php" class="mu-readmore-btn mu-reservation-btn">Shop now</a>
           </div>
           <!-- / Top slider content -->
         </div>
@@ -129,7 +129,7 @@ require "php_controllers/connector.php";
             <h2 class="mu-slider-title">Tailored just for You</h2> 
             <p></p>         
            <a href="#mu-reservation" class="mu-readmore-btn mu-reservation-btn">BOOK A TABLE</a>
-           <a href="Menu.html" class="mu-readmore-btn mu-reservation-btn">Shop Now!</a>
+           <a href="Menu.php" class="mu-readmore-btn mu-reservation-btn">Shop Now!</a>
           </div>
           <!-- / Top slider content -->
         </div>
@@ -144,7 +144,7 @@ require "php_controllers/connector.php";
             <h2 class="mu-slider-title">Right at your Fingertips</h2>
             <p></p>
             <a href="#mu-reservation" class="mu-readmore-btn mu-reservation-btn">BOOK A TABLE</a>
-            <a href="Menu.html" class="mu-readmore-btn mu-reservation-btn">Shop Now!</a>
+            <a href="Menu.php" class="mu-readmore-btn mu-reservation-btn">Shop Now!</a>
           </div>
           <!-- / Top slider content -->
         </div>

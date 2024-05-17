@@ -159,7 +159,7 @@ if(isset($_SESSION['caterer_id'])) {
     }
 } else {
     // If caterer_id is not set in the session, display an error message
-    echo "<p>caterer_id is not set</p>";
+    echo "<p>Go Back to your home.</p>";
 }
                 ?>
             </div>

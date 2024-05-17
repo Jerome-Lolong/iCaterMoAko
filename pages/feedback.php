@@ -102,7 +102,7 @@
             //$food_caterer_id = $_SESSION['food_caterer_id'];
             require "../php_controllers/connector.php";
 
-            $sql = "SELECT feedback.feedback_id, appointment_schedule.appointment_date, feedback.rating, feedback.feedback_message FROM feedback INNER JOIN appointment_schedule ON feedback.appointment_id = appointment_schedule.appointment_id WHERE caterer_id = ?;";
+            $sql = "SELECT feedback.feedback_id, appointment_schedule.appointment_date, feedback.rating, feedback.feedback_message FROM feedback INNER JOIN appointment_schedule ON feedback.appointment_id = appointment_schedule.appointment_id WHERE feedback.caterer_id = ?;";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "i", $food_caterer_id);
             mysqli_stmt_execute($stmt);

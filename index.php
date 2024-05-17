@@ -470,14 +470,15 @@ require "php_controllers/connector.php";
                         <img src="."/images/caterers/765-default-avatar.png"."alt='chef img'>
                       </figure>                  
                     ";                    
+                  }else{
+                    echo "
+                    <li>
+                    <div class='mu-single-chef'>
+                      <figure class='mu-single-chef-img'>
+                        <img src='".$row["caterer_image_path"]."' alt='chef img'>
+                      </figure>                  
+                    ";
                   }
-                  echo "
-                  <li>
-                  <div class='mu-single-chef'>
-                    <figure class='mu-single-chef-img'>
-                      <img src=".$row["caterer_image_path"]." alt='chef img'>
-                    </figure>                  
-                  ";
                   echo "
                   <div class='mu-single-chef-info'>
                     <h4>".$row["owner_name"]."</h4>
